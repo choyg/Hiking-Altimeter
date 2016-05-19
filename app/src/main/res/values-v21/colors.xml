@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="colorPrimary" type="color">#FF5722</item>
+    <item name="colorPrimaryDark" type="color">#E64A19</item>
+    <item name="colorAccent" type="color">#E64A19</item>
+    <item name="statusBarColor" type="color">#E64A19</item>
+    <item name="textColor" type="color">#EEEEEE</item>
+
+    <integer-array name="androidcolors">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimaryDark</item>
+        <item>@color/colorAccent</item>
+        <item>@color/statusBarColor</item>
+        <item>@color/textColor</item>
+    </integer-array>
+
+</resources> 

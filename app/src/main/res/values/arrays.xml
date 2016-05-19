@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="unit_types">
+    <item>"Meters"</item>
+    <item>"Feet"</item>
+</string-array>
+<string-array name="unit_values">
+    <item>"0"</item>
+    <item>"1"</item>
+</string-array>
+<string-array name="theme_types">
+    <item>"Dark"</item>
+    <item>"Light"</item>
+</string-array>
+<string-array name="theme_values">
+    <item>"0"</item>
+    <item>"1"</item>
+</string-array>
+    <string-array name="floating_types">
+        <item>"0"</item>
+        <item>"1"</item>
+        <item>"2"</item>
+    </string-array>
+    <string-array name="floating_values">
+        <item>"%.0f"</item>
+        <item>"%.1f"</item>
+        <item>"%.2f"</item>
+    </string-array>
+</resources>
