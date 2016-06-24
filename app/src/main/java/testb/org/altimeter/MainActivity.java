@@ -2,6 +2,7 @@ package testb.org.altimeter;
 
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -20,8 +21,6 @@ import com.astuetz.tabs.PagerSlidingTabStrip;
 public class MainActivity extends FragmentActivity {
 
     private SharedPreferences sharedPref;
-    private SensorManager sensorManager;
-    private Sensor barometer;
     private CalculationSingleton singleton = CalculationSingleton.getInstance();
 
     /**
@@ -46,16 +45,11 @@ public class MainActivity extends FragmentActivity {
         tabs.setIndicatorColor(Color.parseColor("#b3ffffff"));
         tabs.setDividerColor(Color.parseColor("#FF5722"));
 
-        //Actionbar stuff, split actionbar, no top
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
+        Intent barometerIntent = new Intent(this, BarometerService.class);
+        startService(barometerIntent);
 
-        //actionbar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
-
-        if (barometer == null) {
-            sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-            barometer = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
-            sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        }
     }
 
 

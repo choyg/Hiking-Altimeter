@@ -23,7 +23,7 @@ public class CalibrationFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.test, container, false);
+        View myView = inflater.inflate(R.layout.calibration, container, false);
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -143,7 +143,7 @@ public class CalibrationFragment extends Fragment {
         icicle.putString("text", currentDistance);
     }
 
-    //Preference Checking. android mvc plsss
+
     private String getUnits() {
         return sharedPref.getString("pref_unitType", "0");
     }

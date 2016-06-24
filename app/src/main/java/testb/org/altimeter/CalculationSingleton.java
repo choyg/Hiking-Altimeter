@@ -1,5 +1,7 @@
 package testb.org.altimeter;
 
+import android.widget.Toast;
+
 public class CalculationSingleton {
 
     final private double CONSTANT_A = 87.9826374782; // R divided by g*M * log(SeaLevelPressure in HPA)
@@ -32,17 +34,23 @@ public class CalculationSingleton {
     }
 
     public void setSealevelPressure(double pressure) {
-        seaLevelPressure = (float)pressure;
+        seaLevelPressure = (float) pressure;
     }
 
     public void setPressure(double pressure) {
         pressureHPA = pressure;
     }
 
-    public double getPressure(){return pressureHPA;}
+    public double getPressure() {
+        return pressureHPA;
+    }
 
-    public float getSeaLevelPressure(){return seaLevelPressure;}
+    public float getSeaLevelPressure() {
+        return seaLevelPressure;
+    }
 
-    public void resetSealLevelPressure(){};
+    public void resetSealLevelPressure() {
+        setSealevelPressure(DEFAULT_SEA_PRESSURE);
+    }
 
 }

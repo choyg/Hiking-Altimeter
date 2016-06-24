@@ -97,7 +97,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
     }
 
     private void updateAltitudeTextView(double alt){
-        int unitTextLength=1;
+        int unitTextLength;
         String str;
         str = String.format(getStrFormat(), alt);
         if(getUnits().equals("1")){

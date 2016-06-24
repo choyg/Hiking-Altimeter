@@ -9,8 +9,7 @@
         android:id="@+id/textLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        >
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/distance"
@@ -18,37 +17,31 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:paddingLeft="30dp"
-
             android:text="00000mi"
-            android:textSize="48sp"
+            android:textSize="48sp" />
 
+        <View
+            android:id="@+id/distDivider"
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:layout_below="@id/distance"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary" />
 
-            />
+        <ImageButton
+            android:id="@+id/removeButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/distDivider"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_action_remove" />
 
     </RelativeLayout>
 
-    <View
-        android:id="@+id/distDivider"
-        android:layout_width="fill_parent"
-        android:layout_height="1sp"
 
-        android:layout_below="@id/textLayout"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary" />
-
-    <ImageButton
-        android:id="@+id/removeButton"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_above="@id/distDivider"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_action_remove"
-
-        />
     <Button
         android:id="@+id/calibrationButton"
         android:layout_width="match_parent"
