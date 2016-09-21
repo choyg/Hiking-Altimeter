@@ -16,6 +16,7 @@ public class BarometerService extends Service {
     SharedPreferences sharedPref;
     SensorManager sensorManager;
     //TODO Check for service memory leak
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

@@ -88,8 +88,6 @@ public class CalibrationFragment extends Fragment {
                         updateDistanceText(currentDistance + ".");
                     }
                 }
-
-
             }
         });
         calibration.setOnClickListener(new View.OnClickListener() {
