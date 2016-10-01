@@ -1,10 +1,14 @@
 package testb.org.altimeter.Presenters;
 
 /**
- * Presenter for CalibrationFragment
+ * Created by testb on 10/1/16.
  */
-public class CalibrationPresenter {
-    public void setSeaPressure(double pressure){
 
-    }
+public interface CalibrationPresenter {
+    void calibrationTextChanged(String calibrationText);
+    void deleteButtonClick();
+    void numberButtonClick(int id);
+    void decimalButtonClick();
+    void calibrationButtonClick();
+
 }

@@ -8,5 +8,8 @@ public interface CalibrationView {
      *  Update the top text which is used for custom calibration
      *  Can be changed when the user
      */
-    void updateDistanceText();
+    void showRemoveButton();
+    void hideRemoveButton();
+    String getCalibrationText();
+    String setCalibrationText(CharSequence text);
 }
