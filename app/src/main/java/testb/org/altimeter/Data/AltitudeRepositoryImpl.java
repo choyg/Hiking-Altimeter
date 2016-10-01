@@ -5,32 +5,33 @@ package testb.org.altimeter.Data;
  */
 
 public class AltitudeRepositoryImpl implements AltitudeRepository {
-
-    //coupling with sharedpref?
-    //probably get a sharedpref singleton
-
     @Override
     public double getPressureHPA() {
         return 0;
     }
 
     @Override
-    public void setPressureHPA() {
+    public void setPressureHPA(double pressureHPA) {
 
     }
 
     @Override
-    public void setSeaLevelPressure() {
+    public void setSeaLevelPressure(double seaLevelPressure) {
 
     }
 
     @Override
     public double getSealevelPressure() {
-
+        return 0;
     }
 
     @Override
     public void resetSeaLevelPressure() {
 
     }
+
+    //coupling with sharedpref?
+    //probably get a sharedpref singleton
+
+
 }
