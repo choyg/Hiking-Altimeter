@@ -1,11 +1,28 @@
 # Hiking Altimeter
-https://play.google.com/store/apps/details?id=org.testb.java.altimeter
+![Google Play Badge](/images/playBadge.png)
 
-Altimeter with calibration presented in a clean interface
 
-###Todo Feature List
-Put pressure sensor on a service to allow for background tracking
+####Android Altimeter featuring a clean interface and easy calibration
 
-Add notification/alert for reaching a certain height
+## Project Details
+Hiking Altimeter is mainly used as a practice to apply what I am currently learning about Android.
 
-Add graph of heights traversed since start of tracking
+Heavily inspired by Android Clean Architecture as demonstrated [here](https://github.com/android10/Android-CleanArchitecture) and MVP.
+
+Essentially, there are 4 layers:
+
+1. Views
+2. Presenters
+3. Business Logic
+4. Data
+
+Each layer should be decoupled from each other and modular with minimal Android framework coupling in anything but Views.
+
+## Coming soon...
++ Altitude tracking and fancy graphs
++ UI Refresh
++ Additional UI customization
++ Optional notifications (altitude alert)
+
+##License
++ [MIT License](/LICENSE)
