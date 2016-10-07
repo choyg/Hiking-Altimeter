@@ -5,10 +5,15 @@ package testb.org.altimeter.Presenters;
  */
 
 public interface CalibrationPresenter {
-    void calibrationTextChanged(String calibrationText);
     void deleteButtonClick();
-    void numberButtonClick(int id);
+
+    void numberButtonClick(String id);
+
     void decimalButtonClick();
+
     void calibrationButtonClick();
+
+    int getUnits();
+
 
 }

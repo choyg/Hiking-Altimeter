@@ -5,11 +5,14 @@ package testb.org.altimeter.Views;
  */
 public interface CalibrationView {
     /**
-     *  Update the top text which is used for custom calibration
-     *  Can be changed when the user
+     * Update the top text which is used for custom calibration
+     * Can be changed when the user
      */
     void showRemoveButton();
+
     void hideRemoveButton();
+
     String getCalibrationText();
-    String setCalibrationText(CharSequence text);
+
+    void setCalibrationText(String text);
 }

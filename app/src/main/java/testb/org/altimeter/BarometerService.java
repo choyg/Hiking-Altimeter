@@ -10,11 +10,13 @@ import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 
 public class BarometerService extends Service {
     private Sensor barometer;
-    SharedPreferences sharedPref;
-    SensorManager sensorManager;
+    private SharedPreferences sharedPref;
+    private SensorManager sensorManager;
+    private SensorEventListener barometerListener;
     //TODO Check for service memory leak
 
     @Nullable
@@ -33,26 +35,37 @@ public class BarometerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        sensorManager.registerListener(new BarometerListener(), barometer, SensorManager.SENSOR_DELAY_UI);
+        barometerListener = new BarometerListener();
+        sensorManager.registerListener(barometerListener, barometer, SensorManager.SENSOR_DELAY_UI);
+
         return START_STICKY;
+    }
+
+    private void sendLocalPressureBroadcast(float value) {
+        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
+        Intent intent = new Intent();
+        intent.putExtra(getString(R.string.pref_pressure),value);
+        broadcastManager.sendBroadcast(intent);
     }
 
     @Override
     public void onDestroy() {
-
+        sensorManager.unregisterListener(barometerListener);
     }
 
-    class BarometerListener implements SensorEventListener {
+    private class BarometerListener implements SensorEventListener {
         CalculationSingleton calculationSingleton = CalculationSingleton.getInstance();
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-            calculationSingleton.setPressure(event.values[0]); //update pressure from sensor
+            sendLocalPressureBroadcast(event.values[0]);
+            //calculationSingleton.setPressure(event.values[0]); //update pressure from sensor
+
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            //do nothing for now
+            //do nothing for now, can't do much with only 1 sensor :(
         }
     }
 }

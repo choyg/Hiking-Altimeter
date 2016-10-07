@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/selectableItemBackground"
-        android:text="Calibrate"
+        android:text="@string/layout_calibration_button"
 
         />
 
