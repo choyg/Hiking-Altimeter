@@ -5,18 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.app.Fragment;
 
 
+import android.preference.PreferenceManager;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
+
 import com.astuetz.tabs.PagerSlidingTabStrip;
 
+import testb.org.altimeter.Views.Fragments.CalibrationFragment;
+import testb.org.altimeter.Views.Fragments.DisplayFragment;
 
-public class MainActivity extends FragmentActivity {
+
+public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPref;
     private CalculationSingleton singleton = CalculationSingleton.getInstance();
@@ -26,8 +36,8 @@ public class MainActivity extends FragmentActivity {
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.frame);
 
@@ -43,31 +53,29 @@ public class MainActivity extends FragmentActivity {
         tabs.setIndicatorColor(Color.parseColor("#b3ffffff"));
         tabs.setDividerColor(Color.parseColor("#FF5722"));
 
-        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-        Intent barometerIntent = new Intent(this, BarometerService.class);
-        startService(barometerIntent);
-
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE) == null) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.snackbar_layout), "No barometer found", Snackbar.LENGTH_INDEFINITE);
+            snackbar.getView().setBackgroundColor(Color.parseColor("#FF5722"));
+            snackbar.show();
+        } else {
+            Intent barometerIntent = new Intent(this, BarometerService.class);
+            startService(barometerIntent);
+        }
     }
-
-
 
     @Override
     protected void onResume() {
         super.onResume();
-        singleton.setSealevelPressure(sharedPref.getFloat("sea_level_pressure",singleton.getSeaLevelPressure()));
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putFloat("sea_level_pressure", singleton.getSeaLevelPressure());
-        editor.apply();
     }
-
-
 
     public class FramePagerAdapter extends FragmentStatePagerAdapter {
 
@@ -81,14 +89,11 @@ public class MainActivity extends FragmentActivity {
         public Fragment getItem(int i) {
             switch (i) {
                 case 0:
-                    Fragment main = new MainFragment();
-                    return main;
+                    return new DisplayFragment();
                 case 1:
-                    Fragment calib = new CalibrationFragment();
-                    return calib;
+                    return new CalibrationFragment();
                 case 2:
-                    Fragment settings = new SettingsFragment();
-                    return settings;
+                    return new SettingsFragment();
                 default:
                     Fragment mainDef = new MainFragment();
                     return mainDef;

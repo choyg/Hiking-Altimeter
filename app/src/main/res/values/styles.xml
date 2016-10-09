@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme" parent="@android:style/Theme.Holo">  </style>
-    <style name="ThemeLight" parent="android:Theme.Holo.Light">  </style>
-    
+
+    <style name="CalibrationDialogTextView" parent="@android:style/Theme.Dialog">
+        android:textSize="20sp"
+        android:textColor="@android:color/primary_text_dark"
+    </style>
 </resources> 

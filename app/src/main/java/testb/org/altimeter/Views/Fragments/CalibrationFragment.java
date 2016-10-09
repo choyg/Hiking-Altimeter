@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 import testb.org.altimeter.Constants;
 import testb.org.altimeter.Data.AltitudeRepositoryImpl;
@@ -25,9 +27,6 @@ import testb.org.altimeter.Presenters.CalibrationPresenterImpl;
 import testb.org.altimeter.R;
 import testb.org.altimeter.Views.CalibrationView;
 
-/**
- * Created by testb on 10/1/16.
- */
 
 public class CalibrationFragment extends Fragment implements CalibrationView {
     private Unbinder unbinder;
@@ -37,7 +36,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     TextView distanceTextView;
 
     @BindView(R.id.removeButton)
-    Button removeButton;
+    ImageButton removeButton;
 
     @BindViews({R.id.one, R.id.two, R.id.three, R.id.four, R.id.five,
             R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero})
@@ -47,6 +46,11 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
             R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero})
     public void onNumberButtonClick(Button button) {
         presenter.numberButtonClick(button.getText().toString());
+    }
+
+    @OnTextChanged(R.id.distance)
+    public void onDistanceTextViewChanged(CharSequence text) {
+        presenter.calibrationTextChanged(text.toString());
     }
 
     @OnClick(R.id.decimal)
@@ -59,19 +63,36 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
         presenter.calibrationButtonClick();
     }
 
+    @OnClick(R.id.removeButton)
+    public void onRemoveButtonClicked() {
+        presenter.deleteButtonClick();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.calibration, container, false);
-        presenter = new CalibrationPresenterImpl(this, new AltitudeRepositoryImpl(getActivity()));
         unbinder = ButterKnife.bind(this, view);
+        String initialVal = "0";
+        if (savedInstanceState != null) {
+            initialVal = savedInstanceState.getString(getString(R.string.calibration_saved_instance_initial));
+        }
+        presenter = new CalibrationPresenterImpl(this, new AltitudeRepositoryImpl(getActivity()), initialVal);
+        setCalibrationText(initialVal);
         // TODO Use fields...
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(getString(R.string.calibration_saved_instance_initial), presenter.getCalibrationVal());
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        presenter = null;
     }
 
     @Override

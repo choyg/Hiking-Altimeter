@@ -15,5 +15,9 @@ public interface CalibrationPresenter {
 
     int getUnits();
 
+    void clearCalibrationText();
 
+    void calibrationTextChanged(String calibrationVal);
+
+    String getCalibrationVal();
 }

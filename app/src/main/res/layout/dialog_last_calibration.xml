@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/info_grid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    grid:alignmentMode="alignBounds"
+    grid:columnCount="2"
+    grid:rowOrderPreserved="true"
+    grid:useDefaultMargins="true">
+
+    <TextView
+        android:id="@+id/titleCalibratedSeaLevel"
+        style="@style/CalibrationDialogTextView"
+        android:text="Elevation"
+        />
+
+    <TextView
+        android:id="@+id/calibratedSeaLevel"
+        style="@style/CalibrationDialogTextView"
+        android:text="57m"
+        grid:layout_gravity="end"
+        />
+
+    <TextView
+        android:id="@+id/titleDateCalibrated"
+        style="@style/CalibrationDialogTextView"
+        android:text="Date"
+        />
+    <TextView
+        android:id="@+id/dateCalibrated"
+        style="@style/CalibrationDialogTextView"
+        android:text="September 8, 2016"
+        grid:layout_gravity="end"
+        />
+    <TextView
+        android:id="@+id/titleTimeCalibrated"
+        style="@style/CalibrationDialogTextView"
+        android:text="Time"
+        />
+    <TextView
+        android:id="@+id/timeCalibrated"
+        style="@style/CalibrationDialogTextView"
+        android:text="3:30 pm"
+        grid:layout_gravity="end"
+        />
+</android.support.v7.widget.GridLayout>

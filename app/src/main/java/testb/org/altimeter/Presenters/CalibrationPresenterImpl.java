@@ -9,34 +9,19 @@ import testb.org.altimeter.Views.CalibrationView;
 public class CalibrationPresenterImpl implements CalibrationPresenter {
 
     CalibrationView view;
-    String calibrationText;
+    String calibrationVal;
     AltitudeRepository repository;
 
-    public CalibrationPresenterImpl(CalibrationView view, AltitudeRepository repository) {
+    public CalibrationPresenterImpl(CalibrationView view, AltitudeRepository repository, String initialVal) {
         this.view = view;
         this.repository = repository;
-        calibrationText = view.getCalibrationText();
+        this.calibrationVal = initialVal;
+        //view.setCalibrationText(calibrationVal); Presenter is null when this is called for some reason
     }
 
+    @Override
     public void calibrationTextChanged(String calibrationText) { //listener for any changes to the textfield in the view
-        this.calibrationText = calibrationText;
-    }
-
-    @Override
-    public void deleteButtonClick() {
-        view.setCalibrationText("0");
-    }
-
-    @Override
-    public void numberButtonClick(String id) {
-        //check
-        if (calibrationText.isEmpty()) {
-            calibrationText = "";
-        } else if (calibrationText.length() < 8 || (calibrationText.length() < 9 && calibrationText.contains("."))) {
-            view.setCalibrationText(calibrationText += id);
-        }
-
-        if (calibrationText.equals("0")) {
+        if (calibrationVal.equals("0")) {
             view.hideRemoveButton();
         } else {
             view.showRemoveButton();
@@ -44,18 +29,44 @@ public class CalibrationPresenterImpl implements CalibrationPresenter {
     }
 
     @Override
+    public void deleteButtonClick() {
+        clearCalibrationText();
+    }
+
+    @Override
+    public void numberButtonClick(String id) {
+        if (calibrationVal.equals("0")) {
+            view.setCalibrationText(calibrationVal = id);
+        } else if (calibrationVal.length() < 8 || (calibrationVal.length() < 9 && calibrationVal.contains("."))) {
+            view.setCalibrationText(calibrationVal += id);
+        }
+    }
+
+    @Override
     public void decimalButtonClick() {
-        if (!calibrationText.contains(".")) {
-            view.setCalibrationText(calibrationText += ".");
+        if (!calibrationVal.contains(".")) {
+            view.setCalibrationText(calibrationVal += ".");
         }
     }
 
     @Override
     public void calibrationButtonClick() {
+        //TODO
     }
+
 
     @Override
     public int getUnits() {
         return repository.getDistanceUnit();
+    }
+
+    @Override
+    public void clearCalibrationText() {
+        view.setCalibrationText(calibrationVal = "0");
+    }
+
+    @Override
+    public String getCalibrationVal(){
+        return calibrationVal;
     }
 }

@@ -37,14 +37,13 @@ public class BarometerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         barometerListener = new BarometerListener();
         sensorManager.registerListener(barometerListener, barometer, SensorManager.SENSOR_DELAY_UI);
-
         return START_STICKY;
     }
 
     private void sendLocalPressureBroadcast(float value) {
         LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         Intent intent = new Intent();
-        intent.putExtra(getString(R.string.pref_pressure),value);
+        intent.putExtra(getString(R.string.pref_pressure), value);
         broadcastManager.sendBroadcast(intent);
     }
 
