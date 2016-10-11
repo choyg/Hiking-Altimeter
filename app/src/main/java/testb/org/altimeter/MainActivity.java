@@ -1,7 +1,6 @@
 package testb.org.altimeter;
 
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,10 +11,8 @@ import android.app.Fragment;
 
 
 import android.preference.PreferenceManager;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v13.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
@@ -30,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPref;
     private CalculationSingleton singleton = CalculationSingleton.getInstance();
+    private Intent barometerIntent = null;
 
     /**
      * Called when the activity is first created.
@@ -54,27 +52,30 @@ public class MainActivity extends AppCompatActivity {
         tabs.setDividerColor(Color.parseColor("#FF5722"));
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-        if (sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE) == null) {
-            Snackbar snackbar = Snackbar.make(findViewById(R.id.snackbar_layout), "No barometer found", Snackbar.LENGTH_INDEFINITE);
-            snackbar.getView().setBackgroundColor(Color.parseColor("#FF5722"));
-            snackbar.show();
-        } else {
-            Intent barometerIntent = new Intent(this, BarometerService.class);
-            startService(barometerIntent);
-        }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE) == null) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.snackbar_layout), "No barometer found", Snackbar.LENGTH_INDEFINITE);
+            snackbar.getView().setBackgroundColor(Color.parseColor("#FF5722"));
+            snackbar.show();
+        } else {
+            barometerIntent = new Intent(this, BarometerService.class);
+            startService(barometerIntent);
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if (barometerIntent != null) {
+            stopService(barometerIntent);
+        }
     }
 
     public class FramePagerAdapter extends FragmentStatePagerAdapter {
