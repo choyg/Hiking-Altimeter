@@ -2,7 +2,10 @@
 <resources>
 
     <style name="CalibrationDialogTextView" parent="@android:style/Theme.Dialog">
-        android:textSize="20sp"
-        android:textColor="@android:color/primary_text_dark"
+        android:textSize="20sp"</style>
+
+    <style name="CalibrationDialogTheme" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:textColorPrimary">@color/textColorDark</item>
+        <item name="android:background">@color/colorAccent</item>
     </style>
 </resources> 

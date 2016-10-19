@@ -1,8 +1,10 @@
 package testb.org.altimeter.Views.Fragments;
 
 import android.app.Fragment;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -24,7 +26,7 @@ import testb.org.altimeter.PressureBroadcastReceiver;
 import testb.org.altimeter.R;
 import testb.org.altimeter.Views.DisplayView;
 
-public class DisplayFragment extends Fragment implements DisplayView, CalibrationDialogCallback{
+public class DisplayFragment extends Fragment implements DisplayView {
     //private DisplayPresenter presenter;
     private Unbinder unbinder;
     private PressureBroadcastReceiver receiver;
@@ -40,8 +42,8 @@ public class DisplayFragment extends Fragment implements DisplayView, Calibratio
 
         View view = inflater.inflate(R.layout.main, container, false);
         unbinder = ButterKnife.bind(this, view);
-        presenter = new DisplayPresenterImpl(new AltitudeRepositoryImpl(getActivity()));
-        //receiver = new PressureBroadcastReceiver(presenter);
+        presenter = new DisplayPresenterImpl(new AltitudeRepositoryImpl(getActivity()), this);
+        receiver = new PressureBroadcastReceiver(presenter);
         // TODO Use fields...
         return view;
     }
@@ -56,7 +58,7 @@ public class DisplayFragment extends Fragment implements DisplayView, Calibratio
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        //LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(receiver);
         unbinder.unbind();
         presenter = null;
     }
@@ -64,7 +66,7 @@ public class DisplayFragment extends Fragment implements DisplayView, Calibratio
     @Override
     public void onResume() {
         super.onResume();
-        //LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver, new IntentFilter(getString(R.string.intent_filter)));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver, new IntentFilter(getString(R.string.intent_filter)));
     }
 
     @Override
@@ -89,13 +91,4 @@ public class DisplayFragment extends Fragment implements DisplayView, Calibratio
         //TODO
     }
 
-    @Override
-    public void resetButtonClicked() {
-        presenter.dialogResetButtonClicked();
-    }
-
-    @Override
-    public void cancelButtonClicked() {
-        presenter.dialogCancelButtonClicked();
-    }
 }

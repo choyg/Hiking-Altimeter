@@ -2,25 +2,30 @@ package testb.org.altimeter.Presenters;
 
 import testb.org.altimeter.Constants;
 import testb.org.altimeter.Data.AltitudeRepository;
-
-/**
- * Created by testb on 10/11/16.
- */
+import testb.org.altimeter.Views.CalibrationDialog;
 
 public class CalibrationDialogPresenterImpl implements CalibrationDialogPresenter {
     AltitudeRepository repository;
-    public CalibrationDialogPresenterImpl(AltitudeRepository repository){
+    CalibrationDialog view;
+
+    public CalibrationDialogPresenterImpl(CalibrationDialog view, AltitudeRepository repository) {
         this.repository = repository;
+        this.view = view;
     }
+
     @Override
     public void dialogResetButtonClicked() {
         repository.setSeaLevelPressure(Constants.DEFAULT_SEA_PRESSURE);
-        System.out.println("reset button pressed presenter detect");
-
+        view.showResetSnackbar();
     }
 
     @Override
     public void dialogCancelButtonClicked() {
+        //nothing to do rn
+    }
 
+    @Override
+    public void toastResetActionClicked() {
+        //TODO restore backup calibration
     }
 }

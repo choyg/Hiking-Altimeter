@@ -4,21 +4,22 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import testb.org.altimeter.Presenters.BroadcastPresenter;
+import testb.org.altimeter.Presenters.DisplayPresenter;
 
 public class PressureBroadcastReceiver extends BroadcastReceiver {
-    private BroadcastPresenter presenter;
+    private DisplayPresenter presenter;
 
     public PressureBroadcastReceiver(){
         throw new IllegalArgumentException("Must pass a presenter");
     }
 
-    public PressureBroadcastReceiver(BroadcastPresenter presenter) {
+    public PressureBroadcastReceiver(DisplayPresenter presenter) {
         this.presenter = presenter;
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         presenter.pressureChanged(intent.getFloatExtra(context.getString(R.string.pref_pressure),0));
+
     }
 }
