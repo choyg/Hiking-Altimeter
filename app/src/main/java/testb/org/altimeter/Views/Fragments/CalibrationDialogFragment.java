@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.design.widget.Snackbar;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 
