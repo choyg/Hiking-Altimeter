@@ -18,6 +18,7 @@
             android:layout_alignParentLeft="true"
             android:paddingLeft="30dp"
             android:text="00000mi"
+            android:textColor="@color/textColorDark"
             android:textSize="48sp" />
 
         <View
@@ -27,7 +28,7 @@
             android:layout_below="@id/distance"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/colorPrimary" />
+            android:background="@android:color/darker_gray" />
 
         <ImageButton
             android:id="@+id/removeButton"
