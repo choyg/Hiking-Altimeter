@@ -3,13 +3,11 @@ package testb.org.altimeter.Data;
 public interface AltitudeRepository extends Repository {
     double getPressureHPA();
 
-    void setLastKnownPressureHPA(double pressureHPA);
-
     void setSeaLevelPressure(double seaLevelPressure);
 
-//    void setBackupCalibration(); TODO
+    float getUndoCalibration();
 
-    double getSealevelPressure();
+    float getSealevelPressure();
 
     void resetSeaLevelPressure();
 

@@ -51,12 +51,12 @@ public class CalibrationDialogFragment extends DialogFragment implements Calibra
                 .create();
     }
 
-    public void showResetSnackbar() {
+    public void showUndoSnackbar() {
         Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.snackbar_layout), "Calibration Reset", Snackbar.LENGTH_LONG);
         snackbar.setAction("Undo", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.toastResetActionClicked();
+                presenter.toastUndoActionClicked();
             }
         });
         snackbar.setCallback(new Snackbar.Callback() {

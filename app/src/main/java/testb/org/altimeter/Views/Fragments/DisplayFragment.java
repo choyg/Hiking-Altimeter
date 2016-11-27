@@ -52,7 +52,6 @@ public class DisplayFragment extends Fragment implements DisplayView {
     public void showCalibrationDialog() {
         CalibrationDialogFragment dialog = new CalibrationDialogFragment();
         dialog.show(getFragmentManager(), "dialog");
-
     }
 
     @Override
@@ -74,7 +73,7 @@ public class DisplayFragment extends Fragment implements DisplayView {
         int unitTextLength;
         String str = text;
         //str = String.format(getStrFormat(), text);
-        if ("1".equals("1")) {
+        if ("1".equals("1")) { //TODO WTF IS THIS LOL PLS FIX
             str = str + "ft";
             unitTextLength = 2;
         } else { //always fall back to meters

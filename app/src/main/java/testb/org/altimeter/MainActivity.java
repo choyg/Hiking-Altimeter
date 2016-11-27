@@ -3,7 +3,6 @@ package testb.org.altimeter;
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -11,8 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 
-
-import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentStatePagerAdapter;
@@ -22,7 +19,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -35,8 +31,6 @@ import testb.org.altimeter.Views.Fragments.DisplayFragment;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private SharedPreferences sharedPref;
 
     private Intent barometerIntent = null;
     private Unbinder unbinder;
@@ -61,11 +55,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabTest);
         tabLayout.setupWithViewPager(pager);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FF5722"));
-
-
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-
-
     }
 
     public static void setTranslucentStatusBar(Window window) {
@@ -128,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] TITLES = {"altimeter", "calibration", "settings"};
 
-        public FramePagerAdapter(FragmentManager fm) {
+        FramePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -142,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 case 2:
                     return new SettingsFragment();
                 default:
-                    Fragment mainDef = new MainFragment();
-                    return mainDef;
+                    return new MainFragment();
             }
         }
 

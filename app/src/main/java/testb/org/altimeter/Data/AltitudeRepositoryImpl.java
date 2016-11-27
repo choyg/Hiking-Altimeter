@@ -24,23 +24,25 @@ public class AltitudeRepositoryImpl implements AltitudeRepository {
     }
 
     @Override
-    public void setLastKnownPressureHPA(double pressureHPA) {
-        sharedPref.edit().putFloat(get(R.string.pref_pressure), (float) pressureHPA).apply();
-    }
-
-    @Override
     public void setSeaLevelPressure(double seaLevelPressure) {
         sharedPref.edit().putFloat(get(R.string.sea_level_pressure), 0).apply();
     }
 
     @Override
-    public double getSealevelPressure() {
-        return sharedPref.getFloat(get(R.string.sea_level_pressure), 0);
+    public float getUndoCalibration() {
+        return sharedPref.getFloat(get(R.string.reset_calibration_temp), Constants.DEFAULT_SEA_PRESSURE);
+    }
+
+    @Override
+    public float getSealevelPressure() {
+        return sharedPref.getFloat(get(R.string.sea_level_pressure), Constants.DEFAULT_SEA_PRESSURE);
     }
 
     @Override
     public void resetSeaLevelPressure() {
+        sharedPref.edit().putFloat(get(R.string.reset_calibration_temp), getSealevelPressure()).apply();
         sharedPref.edit().putFloat(get(R.string.pref_sea_pressure), Constants.DEFAULT_SEA_PRESSURE).apply();
+
     }
 
     @Override

@@ -9,5 +9,6 @@
     <string name="pref_pressureQNH">qnh_pressure</string>
     <string name="pref_pressure">pref_pressure</string>
     <string name="intent_filter">pressure_broadcast_intent_filter</string>
-    <string name="calibration_saved_instance_initial">calibration_saved_instance_initial</string>
+    <string name="reset_calibration_temp">reset_calibration_temp</string>
+    <string name="bundle_calibration_key">bundle_calibration_key</string>
 </resources>

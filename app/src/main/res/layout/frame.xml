@@ -11,8 +11,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:alpha=".8"
-        android:scaleType="fitXY"
-        android:src="@drawable/background_2" />
+        android:scaleType="fitXY" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabTest"
