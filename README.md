@@ -6,18 +6,9 @@
 ####Android Altimeter featuring a clean interface and easy calibration
 
 ## Project Details
-Hiking Altimeter is mainly used as a practice to apply what I am currently learning about Android.
+Hiking Altimeter is a project for applying what I am currently learning about in Android, specifically clean architecture and dependency injection.
 
 Heavily inspired by Android Clean Architecture as demonstrated [here](https://github.com/android10/Android-CleanArchitecture) and MVP.
-
-Essentially, there are 4 layers:
-
-1. Views
-2. Presenters
-3. Business Logic
-4. Data
-
-Each layer should be decoupled from each other and modular with minimal Android framework coupling in anything but Views.
 
 ## Coming soon...
 + Altitude tracking and fancy graphs
