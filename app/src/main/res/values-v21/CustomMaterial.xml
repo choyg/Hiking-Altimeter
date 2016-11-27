@@ -9,8 +9,17 @@
     <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
     <!--   theme UI controls like checkboxes and text fields -->
     <item name="android:colorAccent">@color/colorAccent</item>
-    <item name="android:statusBarColor">@color/statusBarColor</item>
+    <!--item name="android:statusBarColor">@color/statusBarColor</item> -->
     <item name="android:textColorPrimary">@color/textColor</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+
+
+
+
+
+
+
+
   </style>
   
 </resources>

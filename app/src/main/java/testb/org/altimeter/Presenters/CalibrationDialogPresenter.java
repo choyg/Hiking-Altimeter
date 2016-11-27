@@ -6,6 +6,6 @@ public interface CalibrationDialogPresenter {
 
     void dialogCancelButtonClicked();
 
-    void toastResetActionClicked();
+    void toastUndoActionClicked();
 
 }

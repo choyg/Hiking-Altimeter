@@ -74,7 +74,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
         unbinder = ButterKnife.bind(this, view);
         String initialVal = "0";
         if (savedInstanceState != null) {
-            initialVal = savedInstanceState.getString(getString(R.string.calibration_saved_instance_initial));
+            initialVal = savedInstanceState.getString(getString(R.string.bundle_calibration_key));
         }
         presenter = new CalibrationPresenterImpl(this, new AltitudeRepositoryImpl(getActivity()), initialVal);
         setCalibrationText(initialVal);
@@ -85,7 +85,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(getString(R.string.calibration_saved_instance_initial), presenter.getCalibrationVal());
+        outState.putString(getString(R.string.bundle_calibration_key), presenter.getCalibrationVal());
     }
 
     @Override
@@ -112,7 +112,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
 
     @Override
     public void setCalibrationText(String text) {
-        int unitTextLength = 1;
+        int unitTextLength;
         if (presenter.getUnits() == Constants.UNITS_FEET) {
             text = text + "ft";
             unitTextLength = 2;
