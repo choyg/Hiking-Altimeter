@@ -1,4 +1,4 @@
-package testb.org.altimeter.Presenters;
+package testb.org.altimeter.presenter;
 
 public interface DisplayPresenter {
     void dialogResetButtonClicked();

@@ -1,4 +1,4 @@
-package testb.org.altimeter.Views.Fragments;
+package testb.org.altimeter.view.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -22,10 +22,10 @@ import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 import testb.org.altimeter.Constants;
 import testb.org.altimeter.Data.AltitudeRepositoryImpl;
-import testb.org.altimeter.Presenters.CalibrationPresenter;
-import testb.org.altimeter.Presenters.CalibrationPresenterImpl;
+import testb.org.altimeter.presenter.CalibrationPresenter;
+import testb.org.altimeter.presenter.CalibrationPresenterImpl;
 import testb.org.altimeter.R;
-import testb.org.altimeter.Views.CalibrationView;
+import testb.org.altimeter.view.CalibrationView;
 
 
 public class CalibrationFragment extends Fragment implements CalibrationView {

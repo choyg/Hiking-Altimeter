@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import testb.org.altimeter.Presenters.DisplayPresenter;
+import testb.org.altimeter.presenter.DisplayPresenter;
 
 public class PressureBroadcastReceiver extends BroadcastReceiver {
     private DisplayPresenter presenter;

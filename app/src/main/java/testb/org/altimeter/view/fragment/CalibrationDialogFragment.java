@@ -1,4 +1,4 @@
-package testb.org.altimeter.Views.Fragments;
+package testb.org.altimeter.view.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,9 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import testb.org.altimeter.Data.AltitudeRepositoryImpl;
-import testb.org.altimeter.Presenters.CalibrationDialogPresenterImpl;
+import testb.org.altimeter.presenter.CalibrationDialogPresenterImpl;
 import testb.org.altimeter.R;
-import testb.org.altimeter.Views.CalibrationDialog;
+import testb.org.altimeter.view.CalibrationDialog;
 
 
 public class CalibrationDialogFragment extends DialogFragment implements CalibrationDialog {

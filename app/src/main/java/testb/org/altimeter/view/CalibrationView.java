@@ -1,4 +1,4 @@
-package testb.org.altimeter.Views;
+package testb.org.altimeter.view;
 
 /**
  * Created by testb on 9/21/16.

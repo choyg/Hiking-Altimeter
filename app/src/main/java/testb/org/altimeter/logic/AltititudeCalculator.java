@@ -1,4 +1,4 @@
-package testb.org.altimeter.Logic;
+package testb.org.altimeter.logic;
 
 import testb.org.altimeter.Constants;
 import testb.org.altimeter.Data.AltitudeRepository;

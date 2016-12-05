@@ -5,9 +5,9 @@ import org.mockito.MockitoAnnotations;
 
 
 import testb.org.altimeter.Data.AltitudeRepository;
-import testb.org.altimeter.Presenters.CalibrationDialogPresenter;
-import testb.org.altimeter.Presenters.CalibrationDialogPresenterImpl;
-import testb.org.altimeter.Views.CalibrationDialog;
+import testb.org.altimeter.presenter.CalibrationDialogPresenter;
+import testb.org.altimeter.presenter.CalibrationDialogPresenterImpl;
+import testb.org.altimeter.view.CalibrationDialog;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;

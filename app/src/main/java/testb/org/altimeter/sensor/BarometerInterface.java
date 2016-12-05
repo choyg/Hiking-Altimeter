@@ -1,4 +1,4 @@
-package testb.org.altimeter.Sensor;
+package testb.org.altimeter.sensor;
 
 /**
  * Created by testb on 9/21/16.

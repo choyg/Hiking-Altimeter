@@ -1,4 +1,4 @@
-package testb.org.altimeter;
+package testb.org.altimeter.view.activity;
 
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
@@ -21,13 +21,15 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import testb.org.altimeter.Views.Fragments.CalibrationFragment;
-import testb.org.altimeter.Views.Fragments.DisplayFragment;
+import testb.org.altimeter.BarometerService;
+import testb.org.altimeter.R;
+import testb.org.altimeter.view.fragment.SettingsFragment;
+import testb.org.altimeter.view.fragment.CalibrationFragment;
+import testb.org.altimeter.view.fragment.DisplayFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 case 2:
                     return new SettingsFragment();
                 default:
-                    return new MainFragment();
+                    return new DisplayFragment();
             }
         }
 

@@ -1,4 +1,4 @@
-package testb.org.altimeter.Views.Fragments;
+package testb.org.altimeter.view.fragment;
 
 import android.app.Fragment;
 import android.content.IntentFilter;
@@ -19,15 +19,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import testb.org.altimeter.Data.AltitudeRepositoryImpl;
-import testb.org.altimeter.Model.CalibrationModel;
-import testb.org.altimeter.Presenters.DisplayPresenter;
-import testb.org.altimeter.Presenters.DisplayPresenterImpl;
+import testb.org.altimeter.model.CalibrationModel;
+import testb.org.altimeter.presenter.DisplayPresenter;
+import testb.org.altimeter.presenter.DisplayPresenterImpl;
 import testb.org.altimeter.PressureBroadcastReceiver;
 import testb.org.altimeter.R;
-import testb.org.altimeter.Views.DisplayView;
+import testb.org.altimeter.view.DisplayView;
 
 public class DisplayFragment extends Fragment implements DisplayView {
-    //private DisplayPresenter presenter;
     private Unbinder unbinder;
     private PressureBroadcastReceiver receiver;
     private DisplayPresenter presenter;
@@ -36,22 +35,21 @@ public class DisplayFragment extends Fragment implements DisplayView {
     TextView altitudeText;
     @BindView(R.id.calibrationOptions)
     Button calibrationOptions;
+    @OnClick(R.id.calibrationOptions)
+    public void showCalibrationDialog() {
+        CalibrationDialogFragment dialog = new CalibrationDialogFragment();
+        dialog.show(getFragmentManager(), "dialog");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.main, container, false);
         unbinder = ButterKnife.bind(this, view);
-        presenter = new DisplayPresenterImpl(new AltitudeRepositoryImpl(getActivity()), this);
+        presenter = new DisplayPresenterImpl(new AltitudeRepositoryImpl(getActivity()));
         receiver = new PressureBroadcastReceiver(presenter);
         // TODO Use fields...
         return view;
-    }
-
-    @OnClick(R.id.calibrationOptions)
-    public void showCalibrationDialog() {
-        CalibrationDialogFragment dialog = new CalibrationDialogFragment();
-        dialog.show(getFragmentManager(), "dialog");
     }
 
     @Override
@@ -69,7 +67,7 @@ public class DisplayFragment extends Fragment implements DisplayView {
     }
 
     @Override
-    public void updateElevation(String text) { //TODO
+    public void updateElevation(String text) {
         int unitTextLength;
         String str = text;
         //str = String.format(getStrFormat(), text);

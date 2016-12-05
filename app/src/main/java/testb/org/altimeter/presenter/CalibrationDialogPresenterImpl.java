@@ -1,7 +1,7 @@
-package testb.org.altimeter.Presenters;
+package testb.org.altimeter.presenter;
 
 import testb.org.altimeter.Data.AltitudeRepository;
-import testb.org.altimeter.Views.CalibrationDialog;
+import testb.org.altimeter.view.CalibrationDialog;
 
 public class CalibrationDialogPresenterImpl implements CalibrationDialogPresenter {
     private AltitudeRepository repository;

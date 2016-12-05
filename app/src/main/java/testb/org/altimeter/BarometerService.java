@@ -14,7 +14,6 @@ import android.support.v4.content.LocalBroadcastManager;
 
 public class BarometerService extends Service {
     private Sensor barometer;
-    private SharedPreferences sharedPref;
     private SensorManager sensorManager;
     private SensorEventListener barometerListener;
     //TODO Check for service memory leak
@@ -29,8 +28,6 @@ public class BarometerService extends Service {
     public void onCreate() {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         barometer = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-
     }
 
     @Override
@@ -53,7 +50,7 @@ public class BarometerService extends Service {
     }
 
     private class BarometerListener implements SensorEventListener {
-        CalculationSingleton calculationSingleton = CalculationSingleton.getInstance();
+
 
         @Override
         public void onSensorChanged(SensorEvent event) {

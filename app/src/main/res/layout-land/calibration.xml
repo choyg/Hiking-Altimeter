@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".view.activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/textLayout"

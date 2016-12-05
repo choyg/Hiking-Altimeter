@@ -1,6 +1,6 @@
-package testb.org.altimeter.Views;
+package testb.org.altimeter.view;
 
-import testb.org.altimeter.Model.CalibrationModel;
+import testb.org.altimeter.model.CalibrationModel;
 
 public interface DisplayView {
     void updateElevation(String text);

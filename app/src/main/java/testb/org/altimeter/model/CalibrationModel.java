@@ -1,4 +1,4 @@
-package testb.org.altimeter.Model;
+package testb.org.altimeter.model;
 
 import java.util.Date;
 

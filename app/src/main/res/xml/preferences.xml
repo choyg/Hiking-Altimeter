@@ -16,8 +16,4 @@
         android:key="pref_decimal_places"
         android:summary="%s"
         android:title="@string/pref_decimal_places" />
-    <Preference
-        android:title="Reset Calibration"
-        android:key="pref_reset"
-        />
 </PreferenceScreen>
