@@ -4,22 +4,31 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import testb.org.altimeter.presenter.DisplayPresenter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PressureBroadcastReceiver extends BroadcastReceiver {
-    private DisplayPresenter presenter;
+    List<PressureListener> listeners = new ArrayList<>();
 
-    public PressureBroadcastReceiver(){
-        throw new IllegalArgumentException("Must pass a presenter");
+    public void registerListener(PressureListener listener) {
+        listeners.add(listener);
     }
 
-    public PressureBroadcastReceiver(DisplayPresenter presenter) {
-        this.presenter = presenter;
+    public void unregister(PressureListener listener) {
+        listeners.remove(listener);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        presenter.pressureChanged(intent.getFloatExtra(context.getString(R.string.pref_pressure),0));
+        String key = context.getString(R.string.pref_pressure);
 
+        float value = intent.getExtras().getFloat(key, Constants.DEFAULT_SEA_PRESSURE);
+        for (PressureListener listener : listeners) {
+            listener.onPressureChanged(value);
+        }
+    }
+
+    public interface PressureListener {
+        void onPressureChanged(float pressure);
     }
 }

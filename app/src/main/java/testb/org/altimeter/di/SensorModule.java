@@ -18,7 +18,7 @@ public class SensorModule {
     }
     @Provides
     @Singleton
-    Sensor providesBarometer(SensorManager manager){
+    Sensor provideBarometer(SensorManager manager){
         return manager.getDefaultSensor(Sensor.TYPE_PRESSURE);
     }
 }

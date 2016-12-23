@@ -1,6 +1,8 @@
 package testb.org.altimeter.presenter;
 
-import testb.org.altimeter.Data.AltitudeRepository;
+import javax.inject.Inject;
+
+import testb.org.altimeter.data.AltitudeRepository;
 import testb.org.altimeter.view.CalibrationView;
 
 /**
@@ -8,15 +10,19 @@ import testb.org.altimeter.view.CalibrationView;
  */
 public class CalibrationPresenterImpl implements CalibrationPresenter {
 
-    CalibrationView view;
-    String calibrationVal;
-    AltitudeRepository repository;
+    private CalibrationView view;
+    private String calibrationVal;
+    private AltitudeRepository repository;
 
-    public CalibrationPresenterImpl(CalibrationView view, AltitudeRepository repository, String initialVal) {
-        this.view = view;
+    @Inject
+    public CalibrationPresenterImpl(AltitudeRepository repository) {
         this.repository = repository;
-        this.calibrationVal = initialVal;
         //view.setCalibrationText(calibrationVal); Presenter is null when this is called for some reason
+    }
+
+    public void setView(CalibrationView view, String initialVal) {
+        this.view = view;
+        calibrationVal = initialVal;
     }
 
     @Override
@@ -66,7 +72,7 @@ public class CalibrationPresenterImpl implements CalibrationPresenter {
     }
 
     @Override
-    public String getCalibrationVal(){
+    public String getCalibrationVal() {
         return calibrationVal;
     }
 }

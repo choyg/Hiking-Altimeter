@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -21,16 +23,17 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 import testb.org.altimeter.Constants;
-import testb.org.altimeter.Data.AltitudeRepositoryImpl;
-import testb.org.altimeter.presenter.CalibrationPresenter;
-import testb.org.altimeter.presenter.CalibrationPresenterImpl;
 import testb.org.altimeter.R;
+import testb.org.altimeter.presenter.CalibrationPresenterImpl;
 import testb.org.altimeter.view.CalibrationView;
+import testb.org.altimeter.view.activity.MainActivity;
 
 
 public class CalibrationFragment extends Fragment implements CalibrationView {
     private Unbinder unbinder;
-    private CalibrationPresenter presenter;
+
+    @Inject
+    CalibrationPresenterImpl presenter;
 
     @BindView(R.id.distance)
     TextView distanceTextView;
@@ -72,11 +75,12 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.calibration, container, false);
         unbinder = ButterKnife.bind(this, view);
+        ((MainActivity) getActivity()).getApplicationComponent().inject(this);
         String initialVal = "0";
         if (savedInstanceState != null) {
             initialVal = savedInstanceState.getString(getString(R.string.bundle_calibration_key));
         }
-        presenter = new CalibrationPresenterImpl(this, new AltitudeRepositoryImpl(getActivity()), initialVal);
+        presenter.setView(this, initialVal);
         setCalibrationText(initialVal);
         // TODO Use fields...
         return view;
@@ -113,7 +117,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     @Override
     public void setCalibrationText(String text) {
         int unitTextLength;
-        if (presenter.getUnits() == Constants.UNITS_FEET) {
+        if (presenter.getUnits() == Constants.Units.FEET) {
             text = text + "ft";
             unitTextLength = 2;
         } else { //always fall back to meters

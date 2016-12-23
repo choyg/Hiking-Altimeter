@@ -2,19 +2,25 @@ package testb.org.altimeter;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 
+import javax.inject.Inject;
+
+import testb.org.altimeter.data.AltitudeRepository;
+
 public class BarometerService extends Service {
-    private Sensor barometer;
-    private SensorManager sensorManager;
+    @Inject
+    Sensor barometer;
+    @Inject
+    SensorManager sensorManager;
+    @Inject
+    AltitudeRepository repository;
     private SensorEventListener barometerListener;
     //TODO Check for service memory leak
 
@@ -26,8 +32,7 @@ public class BarometerService extends Service {
 
     @Override
     public void onCreate() {
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        barometer = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+        ((AltimeterApplication) getApplication()).getAppComponent().inject(this);
     }
 
     @Override
@@ -50,13 +55,11 @@ public class BarometerService extends Service {
     }
 
     private class BarometerListener implements SensorEventListener {
-
-
         @Override
         public void onSensorChanged(SensorEvent event) {
-            sendLocalPressureBroadcast(event.values[0]);
-            //calculationSingleton.setPressure(event.values[0]); //update pressure from sensor
-
+            float pressure = event.values[0];
+            repository.setPressureHPA(pressure);
+            sendLocalPressureBroadcast(pressure);
         }
 
         @Override

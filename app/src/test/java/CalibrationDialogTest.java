@@ -3,13 +3,11 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-import testb.org.altimeter.Data.AltitudeRepository;
+import testb.org.altimeter.data.AltitudeRepository;
 import testb.org.altimeter.presenter.CalibrationDialogPresenter;
 import testb.org.altimeter.presenter.CalibrationDialogPresenterImpl;
 import testb.org.altimeter.view.CalibrationDialog;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
 public class CalibrationDialogTest {
@@ -22,7 +20,8 @@ public class CalibrationDialogTest {
     @Before
     public void setupCalibrationDialogPresenter() {
         MockitoAnnotations.initMocks(this);
-        calibrationDialogPresenter = new CalibrationDialogPresenterImpl(calibrationDialog, altitudeRepository);
+        calibrationDialogPresenter = new CalibrationDialogPresenterImpl(altitudeRepository);
+
     }
 
     @Test

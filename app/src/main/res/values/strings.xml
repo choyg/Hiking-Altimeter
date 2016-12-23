@@ -5,6 +5,8 @@
 
     <string name="pref_unitType">Units</string>
     <string name="pref_decimal_places">Decimal Places</string>
+    <string name="pref_unit_key">pref_unitType</string>
+    <string name="pref_decimal_key">pref_decimal_places</string>
     <string name="pref_sea_pressure">sea_level_pressure</string>
     <string name="pref_pressureQNH">qnh_pressure</string>
     <string name="pref_pressure">pref_pressure</string>

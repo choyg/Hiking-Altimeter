@@ -1,15 +1,17 @@
 package testb.org.altimeter.presenter;
 
-import testb.org.altimeter.Data.AltitudeRepository;
+import javax.inject.Inject;
+
+import testb.org.altimeter.data.AltitudeRepository;
 import testb.org.altimeter.view.CalibrationDialog;
 
 public class CalibrationDialogPresenterImpl implements CalibrationDialogPresenter {
     private AltitudeRepository repository;
     private CalibrationDialog view;
 
-    public CalibrationDialogPresenterImpl(CalibrationDialog view, AltitudeRepository repository) {
+    @Inject
+    public CalibrationDialogPresenterImpl(AltitudeRepository repository) {
         this.repository = repository;
-        this.view = view;
     }
 
     @Override
@@ -26,5 +28,9 @@ public class CalibrationDialogPresenterImpl implements CalibrationDialogPresente
     @Override
     public void toastUndoActionClicked() {
         repository.setSeaLevelPressure(repository.getUndoCalibration());
+    }
+
+    public void setView(CalibrationDialog view) {
+        this.view = view;
     }
 }

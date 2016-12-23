@@ -5,5 +5,6 @@ public interface DisplayPresenter {
 
     void dialogCancelButtonClicked();
 
-    void pressureChanged(float newPressure);
+    void onPressureChanged(float pressure);
+
 }

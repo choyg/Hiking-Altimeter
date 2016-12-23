@@ -1,6 +1,7 @@
 package testb.org.altimeter.view.activity;
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,8 +9,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
-
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentStatePagerAdapter;
@@ -25,11 +24,13 @@ import com.bumptech.glide.Glide;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import testb.org.altimeter.AltimeterApplication;
 import testb.org.altimeter.BarometerService;
 import testb.org.altimeter.R;
-import testb.org.altimeter.view.fragment.SettingsFragment;
+import testb.org.altimeter.di.AppComponent;
 import testb.org.altimeter.view.fragment.CalibrationFragment;
 import testb.org.altimeter.view.fragment.DisplayFragment;
+import testb.org.altimeter.view.fragment.SettingsFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -113,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
                 .load(url)
                 .placeholder(R.color.colorAccent)
                 .into(backgroundImageView);
+    }
+
+    public AppComponent getApplicationComponent() {
+        return ((AltimeterApplication) getApplication()).getAppComponent();
     }
 
     public class FramePagerAdapter extends FragmentStatePagerAdapter {
