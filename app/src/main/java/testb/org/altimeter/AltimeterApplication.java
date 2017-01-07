@@ -5,6 +5,7 @@ import android.app.Application;
 import testb.org.altimeter.di.AppComponent;
 import testb.org.altimeter.di.AppModule;
 import testb.org.altimeter.di.DaggerAppComponent;
+import testb.org.altimeter.di.DataModule;
 import testb.org.altimeter.di.SensorModule;
 
 public class AltimeterApplication extends Application {
@@ -16,6 +17,7 @@ public class AltimeterApplication extends Application {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .sensorModule(new SensorModule())
+                .dataModule(new DataModule())
                 .build();
     }
 

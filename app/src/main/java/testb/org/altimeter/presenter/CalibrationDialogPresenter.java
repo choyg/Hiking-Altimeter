@@ -1,5 +1,8 @@
 package testb.org.altimeter.presenter;
 
+import testb.org.altimeter.view.CalibrationDialog;
+
+
 public interface CalibrationDialogPresenter {
 
     void dialogResetButtonClicked();
@@ -7,5 +10,7 @@ public interface CalibrationDialogPresenter {
     void dialogCancelButtonClicked();
 
     void toastUndoActionClicked();
+
+    void setView(CalibrationDialog view);
 
 }

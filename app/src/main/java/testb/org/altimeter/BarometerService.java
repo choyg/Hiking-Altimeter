@@ -22,7 +22,7 @@ public class BarometerService extends Service {
     @Inject
     AltitudeRepository repository;
     private SensorEventListener barometerListener;
-    //TODO Check for service memory leak
+    //TODO Check for service memory leak. i should start doing these
 
     @Nullable
     @Override
@@ -45,6 +45,7 @@ public class BarometerService extends Service {
     private void sendLocalPressureBroadcast(float value) {
         LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         Intent intent = new Intent();
+        intent.setAction(getString(R.string.intent_filter));
         intent.putExtra(getString(R.string.pref_pressure), value);
         broadcastManager.sendBroadcast(intent);
     }
@@ -60,6 +61,8 @@ public class BarometerService extends Service {
             float pressure = event.values[0];
             repository.setPressureHPA(pressure);
             sendLocalPressureBroadcast(pressure);
+
+
         }
 
         @Override

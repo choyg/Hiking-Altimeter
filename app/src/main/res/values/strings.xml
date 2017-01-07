@@ -13,4 +13,7 @@
     <string name="intent_filter">pressure_broadcast_intent_filter</string>
     <string name="reset_calibration_temp">reset_calibration_temp</string>
     <string name="bundle_calibration_key">bundle_calibration_key</string>
+    <string name="tab_title_display">altimeter</string>
+    <string name="tab_title_calibration">calibration</string>
+    <string name="tab_title_settings">settings</string>
 </resources>

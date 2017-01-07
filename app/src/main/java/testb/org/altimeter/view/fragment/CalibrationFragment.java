@@ -75,14 +75,13 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.calibration, container, false);
         unbinder = ButterKnife.bind(this, view);
-        ((MainActivity) getActivity()).getApplicationComponent().inject(this);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
         String initialVal = "0";
         if (savedInstanceState != null) {
             initialVal = savedInstanceState.getString(getString(R.string.bundle_calibration_key));
         }
-        presenter.setView(this, initialVal);
-        setCalibrationText(initialVal);
-        // TODO Use fields...
+        presenter.setView(this);
+        presenter.restoreState(initialVal);
         return view;
     }
 

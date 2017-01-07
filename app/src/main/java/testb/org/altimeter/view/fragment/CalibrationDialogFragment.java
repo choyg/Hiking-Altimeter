@@ -14,6 +14,7 @@ import android.view.View;
 import javax.inject.Inject;
 
 import testb.org.altimeter.R;
+import testb.org.altimeter.presenter.CalibrationDialogPresenter;
 import testb.org.altimeter.presenter.CalibrationDialogPresenterImpl;
 import testb.org.altimeter.view.CalibrationDialog;
 import testb.org.altimeter.view.activity.MainActivity;
@@ -21,7 +22,7 @@ import testb.org.altimeter.view.activity.MainActivity;
 
 public class CalibrationDialogFragment extends DialogFragment implements CalibrationDialog {
     @Inject
-    CalibrationDialogPresenterImpl presenter;
+    CalibrationDialogPresenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class CalibrationDialogFragment extends DialogFragment implements Calibra
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.dialog_last_calibration, null);
-        ((MainActivity) getActivity()).getApplicationComponent().inject(this);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
         presenter.setView(this);
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Last Calibration")

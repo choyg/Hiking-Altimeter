@@ -53,6 +53,8 @@ public class AltitudeRepositoryImpl implements AltitudeRepository {
 
     @Override
     public int getDistanceUnit() {
+        //Unfortunatly, we have to retrieve string values for backward compatibility
+        //even if we are now representing units as ints
         return Integer.valueOf(sharedPref.getString(get(R.string.pref_unit_key), String.valueOf(Constants.Units.METERS)));
     }
 

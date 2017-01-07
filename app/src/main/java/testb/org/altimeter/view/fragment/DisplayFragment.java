@@ -25,13 +25,12 @@ import testb.org.altimeter.R;
 import testb.org.altimeter.model.Altitude;
 import testb.org.altimeter.model.CalibrationModel;
 import testb.org.altimeter.presenter.DisplayPresenter;
-import testb.org.altimeter.presenter.DisplayPresenterImpl;
 import testb.org.altimeter.view.DisplayView;
 import testb.org.altimeter.view.activity.MainActivity;
 
 public class DisplayFragment extends Fragment implements DisplayView {
     @Inject
-    DisplayPresenterImpl presenter;
+    DisplayPresenter presenter;
     private Unbinder unbinder;
     private PressureBroadcastReceiver receiver;
     private Listener listener;
@@ -49,9 +48,9 @@ public class DisplayFragment extends Fragment implements DisplayView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main, container, false);
+        View view = inflater.inflate(R.layout.display, container, false);
         unbinder = ButterKnife.bind(this, view);
-        ((MainActivity) getActivity()).getApplicationComponent().inject(this);
+        ((MainActivity) getActivity()).getActivityComponent().inject(this);
         presenter.setView(this);
         listener = new Listener(presenter);
         receiver = new PressureBroadcastReceiver();

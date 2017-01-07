@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import testb.org.altimeter.BarometerService;
+import testb.org.altimeter.data.AltitudeRepository;
+import testb.org.altimeter.view.activity.MainActivity;
 import testb.org.altimeter.view.fragment.CalibrationDialogFragment;
 import testb.org.altimeter.view.fragment.CalibrationFragment;
 import testb.org.altimeter.view.fragment.DisplayFragment;
@@ -13,11 +15,9 @@ import testb.org.altimeter.view.fragment.DisplayFragment;
 public interface AppComponent {
     void inject(BarometerService barometerService);
 
-    void inject(CalibrationFragment calibrationFragment);
+    void inject(MainActivity mainActivity);
 
-    void inject(CalibrationDialogFragment calibrationDialogFragment);
-
-    void inject(DisplayFragment displayFragment);
-
+    //Expose Repository to dependency graph for our fragments.
+    AltitudeRepository altitudeRepository();
 
 }

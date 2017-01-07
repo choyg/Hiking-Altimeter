@@ -30,6 +30,7 @@ public class CalibrationDialogPresenterImpl implements CalibrationDialogPresente
         repository.setSeaLevelPressure(repository.getUndoCalibration());
     }
 
+    @Override
     public void setView(CalibrationDialog view) {
         this.view = view;
     }

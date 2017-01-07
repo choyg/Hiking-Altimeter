@@ -21,7 +21,7 @@ public class CalibrationDialogTest {
     public void setupCalibrationDialogPresenter() {
         MockitoAnnotations.initMocks(this);
         calibrationDialogPresenter = new CalibrationDialogPresenterImpl(altitudeRepository);
-
+        calibrationDialogPresenter.setView(calibrationDialog);
     }
 
     @Test

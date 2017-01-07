@@ -1,5 +1,7 @@
 package testb.org.altimeter.presenter;
 
+import android.support.annotation.NonNull;
+
 import javax.inject.Inject;
 
 import testb.org.altimeter.data.AltitudeRepository;
@@ -20,9 +22,19 @@ public class CalibrationPresenterImpl implements CalibrationPresenter {
         //view.setCalibrationText(calibrationVal); Presenter is null when this is called for some reason
     }
 
-    public void setView(CalibrationView view, String initialVal) {
+    /**
+     * Restores state usually after onSaveInstanceState from either onCreate, onActivityCreated, or onCreateView().
+     * Syncs up the calibration text between presenter and view.
+     *
+     * @param calibrationVal The saved calibration text.
+     */
+    public void restoreState(String calibrationVal) {
+        this.calibrationVal = calibrationVal;
+        view.setCalibrationText(calibrationVal);
+    }
+
+    public void setView(@NonNull CalibrationView view) {
         this.view = view;
-        calibrationVal = initialVal;
     }
 
     @Override

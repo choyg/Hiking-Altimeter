@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:alpha=".8"
-        android:scaleType="fitXY" />
+        android:alpha=".4"
+        android:scaleType="centerCrop" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabTest"
