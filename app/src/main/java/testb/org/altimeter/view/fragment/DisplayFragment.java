@@ -2,7 +2,9 @@ package testb.org.altimeter.view.fragment;
 
 import android.app.Fragment;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -34,6 +36,7 @@ public class DisplayFragment extends Fragment implements DisplayView {
     private Unbinder unbinder;
     private PressureBroadcastReceiver receiver;
     private Listener listener;
+    private String prefDecimalPlaces;
 
     @BindView(R.id.altitudeText)
     TextView altitudeText;
@@ -51,6 +54,8 @@ public class DisplayFragment extends Fragment implements DisplayView {
         View view = inflater.inflate(R.layout.display, container, false);
         unbinder = ButterKnife.bind(this, view);
         ((MainActivity) getActivity()).getActivityComponent().inject(this);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity()); //TODO better pref handling
+        prefDecimalPlaces = sharedPref.getString(getString(R.string.pref_decimal_key), "%.0f");
         presenter.setView(this);
         listener = new Listener(presenter);
         receiver = new PressureBroadcastReceiver();
@@ -78,20 +83,38 @@ public class DisplayFragment extends Fragment implements DisplayView {
 
     @Override
     public void updateElevation(Altitude altitude) {
+        Spannable span = getFormattedSpannable(altitude);
+        altitudeText.setText(span);
+    }
+
+    private Spannable getFormattedSpannable(Altitude altitude) {
+        StringBuilder str = new StringBuilder();
+        //Adjust altitude decimal places
+        str.append(String.format(prefDecimalPlaces, altitude.getAltitude()));
+
+        //Append units
+        switch (altitude.getUnit()) {
+            case Constants.Units.FEET:
+                str.append("ft");
+                break;
+            case Constants.Units.METERS:
+                str.append("m");
+                break;
+        }
+
+        //Adjust text size
         int unitTextLength;
-        String str = altitude.toString();
         if (altitude.getUnit() == Constants.Units.FEET) {
             unitTextLength = 2;
         } else { //always fall back to meters
             unitTextLength = 1;
         }
-        //Allows us to have smaller unit (m/ft) like we expect instead of same size
         Spannable span = new SpannableString(str);
         span.setSpan(new RelativeSizeSpan(0.6f),
                 str.length() - unitTextLength,
                 str.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        altitudeText.setText(span);
+        return span;
     }
 
     @Override

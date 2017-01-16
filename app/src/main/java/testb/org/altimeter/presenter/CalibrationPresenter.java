@@ -1,5 +1,7 @@
 package testb.org.altimeter.presenter;
 
+import testb.org.altimeter.view.CalibrationView;
+
 public interface CalibrationPresenter {
     void deleteButtonClick();
 
@@ -16,4 +18,8 @@ public interface CalibrationPresenter {
     void calibrationTextChanged(String calibrationVal);
 
     String getCalibrationVal();
+
+    void setView(CalibrationView view);
+
+    void restoreState(String calibrationVal);
 }

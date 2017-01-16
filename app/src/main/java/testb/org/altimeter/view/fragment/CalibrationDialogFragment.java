@@ -70,7 +70,7 @@ public class CalibrationDialogFragment extends DialogFragment implements Calibra
                 presenter = null;
             }
         });
-        snackbar.getView().setBackgroundColor(Color.parseColor("#FF5722")); //primary orange, TODO find better way to set color
+        //snackbar.getView().setBackgroundColor(Color.parseColor("#FF5722")); //primary orange, TODO find better way to set color
         snackbar.setActionTextColor(Color.parseColor("#b3ffffff")); //primary text dark TODO color management
         snackbar.show();
 

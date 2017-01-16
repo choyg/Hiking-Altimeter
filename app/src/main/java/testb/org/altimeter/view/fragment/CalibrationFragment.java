@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 import testb.org.altimeter.Constants;
 import testb.org.altimeter.R;
+import testb.org.altimeter.presenter.CalibrationPresenter;
 import testb.org.altimeter.presenter.CalibrationPresenterImpl;
 import testb.org.altimeter.view.CalibrationView;
 import testb.org.altimeter.view.activity.MainActivity;
@@ -33,7 +35,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     private Unbinder unbinder;
 
     @Inject
-    CalibrationPresenterImpl presenter;
+    CalibrationPresenter presenter;
 
     @BindView(R.id.distance)
     TextView distanceTextView;
@@ -73,6 +75,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d("CalibrationFragment", "create view");
         View view = inflater.inflate(R.layout.calibration, container, false);
         unbinder = ButterKnife.bind(this, view);
         ((MainActivity) getActivity()).getActivityComponent().inject(this);
@@ -94,6 +97,7 @@ public class CalibrationFragment extends Fragment implements CalibrationView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.d("CalibrationFragment", "destroy");
         unbinder.unbind();
         presenter = null;
     }

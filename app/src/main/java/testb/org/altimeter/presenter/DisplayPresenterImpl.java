@@ -36,8 +36,17 @@ public class DisplayPresenterImpl implements DisplayPresenter {
 
     @Override
     public void onPressureChanged(float pressure) {
-        String altitude = String.valueOf(calculator.calculateAltitude());
-        view.updateElevation(new Altitude(altitude, repository.getDistanceUnit()));
+        float altitude = calculator.calculateAltitude();
+        int unit = repository.getDistanceUnit();
+        switch (unit) {
+            case Constants.Units.FEET:
+                altitude *= Constants.METERS_TO_FEET;
+                break;
+            case Constants.Units.METERS:
+                //no change to altitude
+                break;
+        }
+        view.updateElevation(new Altitude(altitude, unit));
 
     }
 

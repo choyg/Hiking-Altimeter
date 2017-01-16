@@ -6,7 +6,7 @@ import testb.org.altimeter.data.AltitudeRepository;
 public class AltitudeCalculator {
 
 
-    AltitudeRepository repo;
+    private AltitudeRepository repo;
 
     public AltitudeCalculator(AltitudeRepository repo) {
         this.repo = repo;
