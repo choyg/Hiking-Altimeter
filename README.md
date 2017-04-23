@@ -3,7 +3,7 @@
 
 
 
-####Android Altimeter featuring a clean interface and easy calibration
+#### Android Altimeter featuring a clean interface and easy calibration
 
 ## Project Details
 Hiking Altimeter is a sandbox for applying what I am currently learning about in Android, specifically certain best practices. Most recently, I have been iterating over different app architectures going from purely activty and fragments to having a singleton source of truth calculator, and finally exploring a more reactive architecture using RxJava.
