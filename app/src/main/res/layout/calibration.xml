@@ -1,9 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.activity.MainActivity">
-
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/textLayout"
@@ -15,11 +13,12 @@
             android:id="@+id/distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:paddingLeft="30dp"
-            android:text="00000mi"
+            android:layout_alignParentStart="true"
+            android:paddingStart="30dp"
             android:textColor="@color/textColorDark"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="00000mi" />
 
         <View
             android:id="@+id/distDivider"
@@ -28,7 +27,8 @@
             android:layout_below="@id/distance"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/darker_gray"
+            tools:ignore="SmallSp" />
 
         <ImageButton
             android:id="@+id/removeButton"
@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/distDivider"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/remove_button"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_action_remove" />
 
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/selectableItemBackground"
-        android:text="@string/layout_calibration_button"
+        android:text="@string/calibration_button"
 
         />
 
@@ -61,7 +62,8 @@
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary"
+        tools:ignore="SmallSp" />
 
     <LinearLayout
         android:id="@+id/TSpecial"
@@ -75,11 +77,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:text="0"
             android:textSize="48sp"
             android:typeface="monospace"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/zero"
@@ -88,7 +91,8 @@
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
             android:text="0"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/decimal"
@@ -98,9 +102,10 @@
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
 
-            android:paddingRight="15dp"
+            android:paddingEnd="15dp"
             android:text="."
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
     </LinearLayout>
 
@@ -116,9 +121,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:text="7"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/eight"
@@ -127,7 +133,8 @@
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
             android:text="8"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/nine"
@@ -136,9 +143,10 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingRight="15dp"
+            android:paddingEnd="15dp"
             android:text="9"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
     </LinearLayout>
 
@@ -154,9 +162,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:text="4"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/five"
@@ -165,7 +174,8 @@
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
             android:text="5"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/six"
@@ -174,9 +184,10 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingRight="15dp"
+            android:paddingEnd="15dp"
             android:text="6"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
     </LinearLayout>
 
@@ -193,9 +204,10 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:text="1"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <Button
             android:id="@+id/two"
@@ -204,7 +216,8 @@
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
             android:text="2"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/three"
@@ -212,9 +225,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingRight="15dp"
+            android:paddingEnd="15dp"
             android:text="3"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
     </LinearLayout>
 

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    android:orientation="vertical"
-    tools:context=".view.activity.MainActivity">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/textLayout"
@@ -16,10 +15,11 @@
             android:id="@+id/distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:paddingLeft="30dp"
-            android:text="00000mi"
-            android:textSize="42sp" />
+            android:layout_alignParentStart="true"
+            android:paddingStart="30dp"
+            android:textSize="42sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="00000mi" />
 
         <View
             android:id="@+id/distDivider"
@@ -28,7 +28,8 @@
             android:layout_below="@id/distance"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/colorPrimary"
+            tools:ignore="SmallSp" />
 
         <ImageButton
             android:id="@+id/removeButton"
@@ -36,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/distDivider"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/remove_button"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_action_remove" />
 
@@ -45,8 +47,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="bottom"
         android:layout_weight="1"
+        android:gravity="bottom"
         android:orientation="vertical">
 
         <android.support.v7.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
@@ -68,8 +70,9 @@
                 android:text="1"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/two"
@@ -80,8 +83,9 @@
                 android:text="2"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/three"
@@ -92,8 +96,9 @@
                 android:text="3"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/four"
@@ -104,8 +109,9 @@
                 android:text="4"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/five"
@@ -116,9 +122,9 @@
                 android:text="5"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
-                grid:layout_rowWeight="1"
                 grid:layout_gravity="fill"
-                />
+                grid:layout_rowWeight="1"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/six"
@@ -129,8 +135,9 @@
                 android:text="6"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/seven"
@@ -141,8 +148,9 @@
                 android:text="7"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/eight"
@@ -153,8 +161,9 @@
                 android:text="8"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/nine"
@@ -165,8 +174,9 @@
                 android:text="9"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/filler"
@@ -178,8 +188,9 @@
                 android:textSize="30sp"
                 android:visibility="invisible"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/zero"
@@ -190,8 +201,9 @@
                 android:text="0"
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/decimal"
@@ -202,8 +214,9 @@
                 android:text="."
                 android:textSize="30sp"
                 grid:layout_columnWeight="1"
+                grid:layout_gravity="fill"
                 grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                tools:ignore="HardcodedText" />
 
 
             <Button
@@ -212,11 +225,11 @@
                 android:layout_height="0dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
-                android:text="@string/layout_calibration_button"
+                android:text="@string/calibration_button"
                 grid:layout_columnSpan="3"
                 grid:layout_columnWeight="1"
-                grid:layout_rowWeight="1"
-                grid:layout_gravity="fill" />
+                grid:layout_gravity="fill"
+                grid:layout_rowWeight="1" />
 
 
         </android.support.v7.widget.GridLayout>

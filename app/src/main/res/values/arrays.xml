@@ -22,8 +22,8 @@
         <item>"2"</item>
     </string-array>
     <string-array name="floating_values">
-        <item>"%.0f"</item>
-        <item>"%.1f"</item>
-        <item>"%.2f"</item>
+        <item>"0"</item>
+        <item>"1"</item>
+        <item>"2"</item>
     </string-array>
 </resources>

@@ -5,15 +5,15 @@
         android:dialogTitle="@string/pref_unitType"
         android:entries="@array/unit_types"
         android:entryValues="@array/unit_values"
-        android:key="@string/pref_unit_key"
+        android:key="pref_unitType"
         android:summary="%s"
         android:title="@string/pref_unitType" />
     <ListPreference
-        android:defaultValue="%.0f"
+        android:defaultValue="0"
         android:dialogTitle="@string/pref_decimal_places"
         android:entries="@array/floating_types"
         android:entryValues="@array/floating_values"
-        android:key="@string/pref_decimal_key"
+        android:key="pref_decimal_places"
         android:summary="%s"
         android:title="@string/pref_decimal_places" />
 </PreferenceScreen>

@@ -6,13 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="testb.org.altimeter.AltimeterApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/CustomTheme">
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/CustomTheme">
             <intent-filter>
@@ -20,9 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".PressureBroadcastReceiver" />
 
-        <service android:name=".BarometerService" />
     </application>
 
 </manifest>
