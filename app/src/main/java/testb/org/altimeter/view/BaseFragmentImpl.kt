@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragmentImpl : Fragment() {
     protected val compositeDeposible = CompositeDisposable()
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
