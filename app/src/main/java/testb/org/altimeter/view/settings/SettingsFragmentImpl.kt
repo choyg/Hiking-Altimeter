@@ -1,5 +1,10 @@
 package testb.org.altimeter.view.settings
 
-import testb.org.altimeter.view.BaseFragment
+import android.support.v4.app.Fragment
+import testb.org.altimeter.view.BasePresenter
 
-class SettingsFragmentImpl : BaseFragment()
+class SettingsFragmentImpl : Fragment() {
+    fun getPresenter(): BasePresenter {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
