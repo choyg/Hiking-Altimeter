@@ -1,3 +1,5 @@
+package com.gchoy.altimeter
+
 class Calculations {
 
     val SEA_TEMPERATURE = 288.15

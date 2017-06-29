@@ -1,4 +1,4 @@
-package testb.org.altimeter.view
+package com.gchoy.altimeter.view
 
 import android.content.Context
 import android.os.Bundle
@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.app.AppCompatActivity
+import com.gchoy.altimeter.service.AltimeterService
+import com.gchoy.altimeter.view.altimeter.AltimeterFragmentImpl
+import com.gchoy.altimeter.view.calibrate.CalibrateFragmentImpl
+import com.gchoy.altimeter.view.settings.SettingsFragmentImpl
 import kotlinx.android.synthetic.main.frame.*
-import service.AltimeterService
 import testb.org.altimeter.R
-import testb.org.altimeter.view.altimeter.AltimeterFragmentImpl
-import testb.org.altimeter.view.calibrate.CalibrateFragmentImpl
-import testb.org.altimeter.view.settings.SettingsFragmentImpl
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

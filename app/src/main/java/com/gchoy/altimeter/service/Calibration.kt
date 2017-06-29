@@ -1,4 +1,4 @@
-package service
+package com.gchoy.altimeter.service
 
 /**
  * @param date Calibration timestamp in milliseconds

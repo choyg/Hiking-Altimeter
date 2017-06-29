@@ -1,7 +1,7 @@
-package testb.org.altimeter.view.settings
+package com.gchoy.altimeter.view.settings
 
 import android.support.v4.app.Fragment
-import testb.org.altimeter.view.BasePresenter
+import com.gchoy.altimeter.view.BasePresenter
 
 class SettingsFragmentImpl : Fragment() {
     fun getPresenter(): BasePresenter {
