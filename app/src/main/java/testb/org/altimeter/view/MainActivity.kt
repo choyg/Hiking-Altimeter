@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.frame.*
+import service.AltimeterService
 import testb.org.altimeter.R
 import testb.org.altimeter.view.altimeter.AltimeterFragmentImpl
 import testb.org.altimeter.view.calibrate.CalibrateFragmentImpl
@@ -40,5 +41,9 @@ class MainActivity : AppCompatActivity() {
         override fun getPageTitle(position: Int): CharSequence {
             return titles[position]
         }
+    }
+
+    fun getAltimeterService(): AltimeterService {
+        return BaseApplication.getAltimeterService(applicationContext)
     }
 }

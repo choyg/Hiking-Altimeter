@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
 import io.reactivex.disposables.CompositeDisposable
+import service.AltimeterService
 
 abstract class BaseFragmentImpl : Fragment() {
     protected val compositeDeposible = CompositeDisposable()
@@ -22,4 +23,9 @@ abstract class BaseFragmentImpl : Fragment() {
     }
 
     protected abstract fun getPresenter(): BasePresenter
+
+    protected fun getAltimeterService(): AltimeterService {
+        val mainActivity = activity as MainActivity
+        return mainActivity.getAltimeterService()
+    }
 }

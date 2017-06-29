@@ -1,4 +1,4 @@
-package testb.org.altimeter.view.calibrate
+package service
 
 /**
  * @param date Calibration timestamp in milliseconds
