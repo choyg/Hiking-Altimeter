@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.app.AppCompatActivity
+import com.f2prateek.rx.preferences2.RxSharedPreferences
 import com.gchoy.altimeter.service.AltimeterService
 import com.gchoy.altimeter.view.altimeter.AltimeterFragmentImpl
 import com.gchoy.altimeter.view.calibrate.CalibrateFragmentImpl
@@ -45,5 +46,9 @@ class MainActivity : AppCompatActivity() {
 
     fun getAltimeterService(): AltimeterService {
         return BaseApplication.getAltimeterService(applicationContext)
+    }
+
+    fun getSharedPref(): RxSharedPreferences {
+        return BaseApplication.getSharedPref(applicationContext)
     }
 }

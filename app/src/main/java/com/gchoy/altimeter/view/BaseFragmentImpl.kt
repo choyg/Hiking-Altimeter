@@ -3,6 +3,7 @@ package com.gchoy.altimeter.view
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import com.f2prateek.rx.preferences2.RxSharedPreferences
 import com.gchoy.altimeter.service.AltimeterService
 import io.reactivex.disposables.CompositeDisposable
 
@@ -27,5 +28,10 @@ abstract class BaseFragmentImpl : Fragment() {
     protected fun getAltimeterService(): AltimeterService {
         val mainActivity = activity as MainActivity
         return mainActivity.getAltimeterService()
+    }
+
+    protected fun getSharedPref(): RxSharedPreferences {
+        val mainActivity = activity as MainActivity
+        return mainActivity.getSharedPref()
     }
 }
