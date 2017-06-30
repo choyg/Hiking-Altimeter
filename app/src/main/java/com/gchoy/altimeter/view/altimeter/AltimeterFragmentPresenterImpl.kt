@@ -9,6 +9,7 @@ import com.gchoy.altimeter.service.Calibration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
+
 class AltimeterFragmentPresenterImpl(
         val view: AltimeterFragment,
         val altimeterService: AltimeterService,
@@ -17,6 +18,8 @@ class AltimeterFragmentPresenterImpl(
 
     private val compositeDisposable = CompositeDisposable()
     private var previousCalibration: Calibration? = null
+    private val prefCalibrationPressure = preferences.getFloat(PREF_CALIBRATION_PRESSURE, PREF_CALIBRATION_PRESSURE.toFloat())
+    private val prefCalibrationDate = preferences.getLong(PREF_CALIBRATION_TIME, 0)
 
     init {
         compositeDisposable.add(altimeterService.getAltitude()
@@ -27,7 +30,15 @@ class AltimeterFragmentPresenterImpl(
     }
 
     override fun attachView() {
-
+        compositeDisposable.add(prefCalibrationPressure
+                .asObservable()
+                .subscribe {
+                    if (prefCalibrationDate.get().equals(0) &&
+                            prefCalibrationPressure.get().equals(DEFAULT_SEA_PRESSURE))
+                        view.setCalibrationVisible(false)
+                    view.setCalibrationVisible(true)
+                    view.setCalibration(Calibration(prefCalibrationDate.get(), prefCalibrationPressure.get().toDouble()))
+                })
     }
 
     override fun detachView() {
@@ -36,13 +47,15 @@ class AltimeterFragmentPresenterImpl(
 
     override fun resetCalibration(calibration: Calibration) {
         previousCalibration = calibration
-        preferences.getFloat(PREF_CALIBRATION_PRESSURE).set(DEFAULT_SEA_PRESSURE.toFloat())
+        prefCalibrationPressure.set(DEFAULT_SEA_PRESSURE.toFloat())
+        prefCalibrationDate.set(0)
         view.showUndoSnackbar()
     }
 
     override fun undoResetCalibration(): Calibration? {
         val calibration = previousCalibration ?: return null
-        preferences.getFloat(PREF_CALIBRATION_PRESSURE).set(calibration.qnh.toFloat())
-        preferences.getLong(PREF_CALIBRATION_TIME).set(calibration.date)
+        prefCalibrationPressure.set(calibration.qnh.toFloat())
+        prefCalibrationDate.set(calibration.date)
+        return calibration
     }
 }
