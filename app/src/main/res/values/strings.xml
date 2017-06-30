@@ -13,4 +13,11 @@
     <string name="tab_title_display">altimeter</string>
     <string name="tab_title_calibration">calibration</string>
     <string name="tab_title_settings">settings</string>
+
+    <string name="time_hours">hours</string>
+    <string name="time_minutes">minutes</string>
+    <string name="time_seconds">seconds</string>
+    <string name="time_ago">ago</string>
+
+    <string name="calibrated_text">Calibrated</string>
 </resources>
