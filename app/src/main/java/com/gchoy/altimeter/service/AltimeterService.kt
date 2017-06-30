@@ -32,6 +32,10 @@ class AltimeterService(val sensorManager: SensorManager, val preferences: RxShar
             }
         }
         sensorManager.registerListener(listener, pressureSensor, sensorDelay)
+
+        emitter.setCancellable {
+            sensorManager.unregisterListener(listener)
+        }
     }
 
     fun format(double: Double): String {

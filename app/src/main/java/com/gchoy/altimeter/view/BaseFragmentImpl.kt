@@ -8,16 +8,16 @@ import com.gchoy.altimeter.service.AltimeterService
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragmentImpl : Fragment() {
-    protected val compositeDeposible = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         getPresenter().attachView()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         getPresenter().detachView()
-        compositeDeposible.clear()
+        compositeDisposable.clear()
 
         val refWatcher = BaseApplication.getRefWatcher(activity)
         refWatcher.watch(this)
