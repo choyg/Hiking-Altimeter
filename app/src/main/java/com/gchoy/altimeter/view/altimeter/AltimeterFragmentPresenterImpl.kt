@@ -18,7 +18,7 @@ class AltimeterFragmentPresenterImpl(
 
     private val compositeDisposable = CompositeDisposable()
     private var previousCalibration: Calibration? = null
-    private val prefCalibrationPressure = preferences.getFloat(PREF_CALIBRATION_PRESSURE, PREF_CALIBRATION_PRESSURE.toFloat())
+    private val prefCalibrationPressure = preferences.getFloat(PREF_CALIBRATION_PRESSURE, DEFAULT_SEA_PRESSURE.toFloat())
     private val prefCalibrationDate = preferences.getLong(PREF_CALIBRATION_TIME, 0)
 
     init {
@@ -30,14 +30,15 @@ class AltimeterFragmentPresenterImpl(
     }
 
     override fun attachView() {
-        compositeDisposable.add(prefCalibrationPressure
+        compositeDisposable.add(prefCalibrationDate
                 .asObservable()
                 .subscribe {
-                    if (prefCalibrationDate.get().equals(0) &&
-                            prefCalibrationPressure.get().equals(DEFAULT_SEA_PRESSURE))
+                    if (prefCalibrationDate.get() == 0L) {
                         view.setCalibrationVisible(false)
-                    view.setCalibrationVisible(true)
-                    view.setCalibration(Calibration(prefCalibrationDate.get(), prefCalibrationPressure.get().toDouble()))
+                    } else {
+                        view.setCalibrationVisible(true)
+                        view.setCalibration(Calibration(prefCalibrationDate.get(), prefCalibrationPressure.get().toDouble()))
+                    }
                 })
     }
 
