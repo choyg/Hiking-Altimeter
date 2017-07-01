@@ -6,4 +6,5 @@ interface CalibratePresenter : BasePresenter {
     fun setCalibration()
     fun clearCalibration()
     fun appendCalibration(char: Char)
+    fun onLoad(altitude: String)
 }
