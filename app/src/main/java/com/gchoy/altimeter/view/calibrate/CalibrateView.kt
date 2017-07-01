@@ -1,6 +1,6 @@
 package com.gchoy.altimeter.view.calibrate
 
-interface CalibrateFragment {
+interface CalibrateView {
     fun setCalibrationText(text: String) {
 
     }

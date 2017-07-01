@@ -8,14 +8,15 @@ import com.gchoy.altimeter.view.BaseFragmentImpl
 import com.gchoy.altimeter.view.BasePresenter
 import testb.org.altimeter.R
 
-class CalibrateFragmentImpl : BaseFragmentImpl() {
+class CalibrateFragmentImpl : BaseFragmentImpl(), CalibrateView {
 
+    lateinit var presenter: CalibratePresenter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.calibration, container, false)
     }
 
     override fun getPresenter(): BasePresenter {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return presenter
     }
 }
