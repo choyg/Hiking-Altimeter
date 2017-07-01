@@ -13,10 +13,16 @@ class CalibrateFragmentImpl : BaseFragmentImpl(), CalibrateView {
     lateinit var presenter: CalibratePresenter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        presenter = CalibratePresenterImpl(this, getSharedPref(), getAltimeterService())
         return inflater?.inflate(R.layout.calibration, container, false)
     }
 
     override fun getPresenter(): BasePresenter {
         return presenter
     }
+
+    override fun setCalibrationText(altitude: String, unit: kotlin.Unit) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }
