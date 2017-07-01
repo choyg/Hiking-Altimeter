@@ -3,7 +3,7 @@ package com.gchoy.altimeter.view.altimeter
 import com.gchoy.altimeter.service.Altitude
 import com.gchoy.altimeter.service.Calibration
 
-interface AltimeterFragment {
+interface AltimeterView {
     /**
      * @parm altitude The Altitude representation to be formatted and displayed
      */

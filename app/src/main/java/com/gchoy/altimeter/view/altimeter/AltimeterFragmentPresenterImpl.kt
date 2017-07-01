@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 
 class AltimeterFragmentPresenterImpl(
-        val view: AltimeterFragment,
+        val view: AltimeterView,
         val altimeterService: AltimeterService,
         val preferences: RxSharedPreferences
 ) : AltimeterFragmentPresenter {

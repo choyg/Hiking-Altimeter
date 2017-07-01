@@ -15,10 +15,7 @@ import kotlinx.android.synthetic.main.altimeter.*
 import testb.org.altimeter.R
 import java.util.*
 
-class AltimeterFragmentImpl : BaseFragmentImpl(), AltimeterFragment {
-    override fun showUndoSnackbar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class AltimeterFragmentImpl : BaseFragmentImpl(), AltimeterView {
 
     lateinit var presenter: AltimeterFragmentPresenter
 
@@ -46,6 +43,11 @@ class AltimeterFragmentImpl : BaseFragmentImpl(), AltimeterFragment {
     override fun setCalibrationVisible(boolean: Boolean) {
         altimeter_calibration.visibility = if (boolean) View.VISIBLE else View.GONE
     }
+
+    override fun showUndoSnackbar() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
     private fun getDate(date: Long): String {
         val dateFormat = android.text.format.DateFormat.getDateFormat(context)
