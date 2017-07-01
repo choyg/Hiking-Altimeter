@@ -4,13 +4,12 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/textLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp">
 
         <TextView
-            android:id="@+id/distance"
+            android:id="@+id/calibration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -21,21 +20,21 @@
             tools:text="00000mi" />
 
         <View
-            android:id="@+id/distDivider"
+            android:id="@+id/calibration_text_divider"
             android:layout_width="fill_parent"
             android:layout_height="1sp"
-            android:layout_below="@id/distance"
+            android:layout_below="@id/calibration_text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@android:color/darker_gray"
             tools:ignore="SmallSp" />
 
         <ImageButton
-            android:id="@+id/removeButton"
+            android:id="@+id/calibration_clear"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/distDivider"
+            android:layout_above="@id/calibration_text_divider"
             android:layout_alignParentEnd="true"
             android:contentDescription="@string/remove_button"
             android:scaleType="fitCenter"

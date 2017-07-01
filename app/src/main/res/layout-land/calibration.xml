@@ -12,7 +12,7 @@
         android:paddingTop="10dp">
 
         <TextView
-            android:id="@+id/distance"
+            android:id="@+id/calibration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -25,14 +25,14 @@
             android:id="@+id/distDivider"
             android:layout_width="fill_parent"
             android:layout_height="1sp"
-            android:layout_below="@id/distance"
+            android:layout_below="@id/calibration_text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@color/colorPrimary"
             tools:ignore="SmallSp" />
 
         <ImageButton
-            android:id="@+id/removeButton"
+            android:id="@+id/calibration_clear"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
