@@ -9,6 +9,7 @@
     <string name="pref_sea_pressure">sea_level_pressure</string>
     <string name="pref_pressureQNH">qnh_pressure</string>
     <string name="pref_pressure">pref_pressure</string>
+    <string name="pref_reset">Reset Calibration</string>
 
     <string name="tab_title_display">altimeter</string>
     <string name="tab_title_calibration">calibration</string>

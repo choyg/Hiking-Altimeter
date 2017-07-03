@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:defaultValue="0"
+        android:defaultValue="m"
         android:dialogTitle="@string/pref_unitType"
         android:entries="@array/unit_types"
-        android:entryValues="@array/unit_values"
-        android:key="pref_unitType"
+        android:entryValues="@array/unit_type_values"
+        android:key="PREF_UNITS"
         android:summary="%s"
         android:title="@string/pref_unitType" />
     <ListPreference
@@ -13,7 +13,10 @@
         android:dialogTitle="@string/pref_decimal_places"
         android:entries="@array/floating_types"
         android:entryValues="@array/floating_values"
-        android:key="pref_decimal_places"
+        android:key="PREF_DECIMALS"
         android:summary="%s"
         android:title="@string/pref_decimal_places" />
+    <Preference
+        android:key="@string/pref_reset"
+        android:title="@string/pref_reset" />
 </PreferenceScreen>

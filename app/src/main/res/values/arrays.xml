@@ -4,10 +4,12 @@
         <item>"Meters"</item>
         <item>"Feet"</item>
     </string-array>
-    <string-array name="unit_values">
-        <item>"0"</item>
-        <item>"1"</item>
+
+    <string-array name="unit_type_values">
+        <item>"m"</item>
+        <item>"ft"</item>
     </string-array>
+
     <string-array name="theme_types">
         <item>"Dark"</item>
         <item>"Light"</item>
@@ -21,11 +23,11 @@
         <item>"1"</item>
         <item>"2"</item>
     </string-array>
-    <integer-array name="floating_values">
+    <string-array name="floating_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
-    </integer-array>
+    </string-array>
     <string-array name="main_tabs">
         <item>"Altimeter</item>
         <item>"Calibrate</item>

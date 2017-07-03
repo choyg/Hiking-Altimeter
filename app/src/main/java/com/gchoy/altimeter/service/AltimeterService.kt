@@ -12,7 +12,7 @@ import io.reactivex.ObservableEmitter
 
 class AltimeterService(val sensorManager: SensorManager, preferences: RxSharedPreferences) {
     val sensorDelay = 100
-    val decimalPref = preferences.getInteger(PREF_DECIMALS, 0)
+    val decimalPref = preferences.getString(PREF_DECIMALS, "0")
     val unitsPref = preferences.getEnum(PREF_UNITS, Unit.m, Unit::class.java)
     val qnhPrefTime = preferences.getLong(PREF_CALIBRATION_TIME, 0)
     val qnhPrefPressure = preferences.getFloat(PREF_CALIBRATION_PRESSURE, DEFAULT_SEA_PRESSURE.toFloat())
@@ -26,8 +26,11 @@ class AltimeterService(val sensorManager: SensorManager, preferences: RxSharedPr
             override fun onSensorChanged(p0: SensorEvent?) {
                 p0?.let {
                     currentPressure.set(p0.values[0])
-                    val altitude = calculateAltitude(currentPressure.get().toDouble(), qnhPrefPressure.get().toDouble())
-                    println(currentPressure.get())
+                    var altitude = calculateAltitude(currentPressure.get().toDouble(), qnhPrefPressure.get().toDouble())
+                    val unit = unitsPref.get()
+                    if (unit == Unit.ft) {
+                        altitude = convertMetersToFeet(altitude)
+                    }
                     val formattedAltitude = format(altitude)
                     emitter.onNext(Altitude(formattedAltitude, unitsPref.get().name))
                 }
@@ -41,7 +44,7 @@ class AltimeterService(val sensorManager: SensorManager, preferences: RxSharedPr
     }
 
     fun format(double: Double): String {
-        return String.format("%.${decimalPref.get()}f", double)
+        return String.format("%.${decimalPref.get().toInt()}f", double)
     }
 
     fun getAltitude(): Observable<Altitude> {
