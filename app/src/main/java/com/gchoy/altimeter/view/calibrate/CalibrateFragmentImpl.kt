@@ -21,7 +21,7 @@ class CalibrateFragmentImpl : BaseFragmentImpl(), CalibrateView {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.calibration, container, false)
-        presenter = CalibratePresenterImpl(this, getSharedPref())
+        presenter = CalibratePresenterImpl(this, getSharedPref(), getAltimeterService())
         return view
     }
 
@@ -29,6 +29,7 @@ class CalibrateFragmentImpl : BaseFragmentImpl(), CalibrateView {
         super.onViewCreated(view, savedInstanceState)
         bindDigits()
         calibration_clear.setOnClickListener { presenter.clearCalibration() }
+        calibration_set.setOnClickListener { presenter.setCalibration() }
         savedInstanceState?.let {
             val saved: String? = it.getString("catsgomoosuperbadkeyname")
             if (saved != null) presenter.onLoad(saved)

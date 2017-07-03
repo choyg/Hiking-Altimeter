@@ -1,16 +1,20 @@
 package com.gchoy.altimeter.view.calibrate
 
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.PREF_UNITS
+import com.gchoy.altimeter.*
 import com.gchoy.altimeter.Unit
+import com.gchoy.altimeter.service.AltimeterService
 import io.reactivex.disposables.CompositeDisposable
 
 class CalibratePresenterImpl(val view: CalibrateView,
-                             val preference: RxSharedPreferences
+                             preference: RxSharedPreferences,
+                             val altimeterService: AltimeterService
 ) : CalibratePresenter {
 
     val compositeDisposable = CompositeDisposable()
     val unitPref = preference.getEnum(PREF_UNITS, Unit.m, Unit::class.java)
+    val calibrationPresurePref = preference.getFloat(PREF_CALIBRATION_PRESSURE)
+    val calibrationTimepref = preference.getLong(PREF_CALIBRATION_TIME)
     var altitudeString = "0"
 
     override fun attachView() {
@@ -26,7 +30,10 @@ class CalibratePresenterImpl(val view: CalibrateView,
     }
 
     override fun setCalibration() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val knownAltitude = altitudeString.toDouble()
+        val qnh = calculateQNH(knownAltitude, altimeterService.getPressureOnce())
+        calibrationPresurePref.set(qnh.toFloat())
+        calibrationTimepref.set(System.currentTimeMillis())
     }
 
     override fun clearCalibration() {
@@ -43,7 +50,7 @@ class CalibratePresenterImpl(val view: CalibrateView,
             altitudeString += char
 
         }
-        view.setCalibrationText(altitudeString, Unit.ft)
+        view.setCalibrationText(altitudeString, unitPref.get())
         view.save(altitudeString)
     }
 
