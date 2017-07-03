@@ -30,7 +30,10 @@ class CalibratePresenterImpl(val view: CalibrateView,
     }
 
     override fun setCalibration() {
-        val knownAltitude = altitudeString.toDouble()
+        var knownAltitude = altitudeString.toDouble()
+        if (unitPref.get() == Unit.ft) {
+            knownAltitude = convertFeetToMeters(knownAltitude)
+        }
         val qnh = calculateQNH(knownAltitude, altimeterService.getPressureOnce())
         calibrationPresurePref.set(qnh.toFloat())
         calibrationTimepref.set(System.currentTimeMillis())

@@ -10,3 +10,11 @@ fun calculateAltitude(currentPressure: Double, seaLevelPressure: Double = DEFAUL
 fun calculateQNH(knownAltitude: Double, currentPressure: Double): Double {
     return currentPressure * Math.pow(SEA_TEMPERATURE / (SEA_TEMPERATURE - 0.0065 * knownAltitude), 5.25587611)
 }
+
+fun convertMetersToFeet(meters: Double): Double {
+    return meters * 3.28084
+}
+
+fun convertFeetToMeters(feet: Double): Double {
+    return feet / 3.28084
+}
