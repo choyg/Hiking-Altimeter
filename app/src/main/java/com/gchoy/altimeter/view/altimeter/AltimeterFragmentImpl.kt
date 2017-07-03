@@ -41,7 +41,7 @@ class AltimeterFragmentImpl : BaseFragmentImpl(), AltimeterView {
     }
 
     override fun setCalibrationVisible(boolean: Boolean) {
-        altimeter_calibration.visibility = if (boolean) View.VISIBLE else View.GONE
+        //altimeter_calibration.visibility = if (boolean) View.VISIBLE else View.GONE
     }
 
     override fun showUndoSnackbar() {
