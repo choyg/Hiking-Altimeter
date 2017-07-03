@@ -10,12 +10,13 @@ import com.gchoy.altimeter.Unit
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 
-class AltimeterService(val sensorManager: SensorManager, val preferences: RxSharedPreferences) {
+class AltimeterService(val sensorManager: SensorManager, preferences: RxSharedPreferences) {
     val sensorDelay = 100
     val decimalPref = preferences.getInteger(PREF_DECIMALS, 0)
     val unitsPref = preferences.getEnum(PREF_UNITS, Unit.m, Unit::class.java)
     val qnhPrefTime = preferences.getLong(PREF_CALIBRATION_TIME, 0)
     val qnhPrefPressure = preferences.getFloat(PREF_CALIBRATION_PRESSURE, DEFAULT_SEA_PRESSURE.toFloat())
+    val currentPressure = preferences.getFloat(PREF_CURRENT_PRESSURE, DEFAULT_SEA_PRESSURE.toFloat())
 
     private val altitudeObservable = Observable.create { emitter: ObservableEmitter<Altitude> ->
         val pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE)
@@ -24,8 +25,9 @@ class AltimeterService(val sensorManager: SensorManager, val preferences: RxShar
 
             override fun onSensorChanged(p0: SensorEvent?) {
                 p0?.let {
-                    val currentPressure = p0.values[0].toDouble()
-                    val altitude = calculateAltitude(currentPressure, qnhPrefPressure.get().toDouble())
+                    currentPressure.set(p0.values[0])
+                    val altitude = calculateAltitude(currentPressure.get().toDouble(), qnhPrefPressure.get().toDouble())
+                    println(currentPressure.get())
                     val formattedAltitude = format(altitude)
                     emitter.onNext(Altitude(formattedAltitude, unitsPref.get().name))
                 }
@@ -44,5 +46,11 @@ class AltimeterService(val sensorManager: SensorManager, val preferences: RxShar
 
     fun getAltitude(): Observable<Altitude> {
         return altitudeObservable
+    }
+
+    fun getPressureOnce(): Double {
+        val pressure = currentPressure.get()
+        println(pressure)
+        return pressure.toDouble()
     }
 }
