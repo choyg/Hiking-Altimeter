@@ -21,7 +21,7 @@
         tools:text="800498.35ft" />
 
 
-    <Button
+    <TextView
         android:id="@+id/altimeter_calibration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
