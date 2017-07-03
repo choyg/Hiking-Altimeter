@@ -220,7 +220,7 @@
 
 
             <Button
-                android:id="@+id/calibrationButton"
+                android:id="@+id/calibration_set"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="?android:attr/selectableItemBackground"
