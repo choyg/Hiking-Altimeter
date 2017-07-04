@@ -6,9 +6,9 @@
 #### Android Altimeter featuring a clean interface and easy calibration
 
 ## Project Details
-Hiking Altimeter is a sandbox for applying what I am currently learning about in Android, specifically certain best practices. Most recently, I have been iterating over different app architectures going from purely activty and fragments to having a singleton source of truth calculator, and finally exploring a more reactive architecture using RxJava.
+Kotlin rewrite.
 
-This is accomplished by subscribing to multiple observables in the presenter and updating the view as necessary to accomodate changes in preferences and air pressure. One major advantage is a clear delegation of each task so that the presenter does not have too much responsibility.
+Previous sandbox project for testing out new concepts I was reading about.
 
 Heavily inspired by Android Clean Architecture as demonstrated [here](https://github.com/android10/Android-CleanArchitecture) and MVP on UI layer.
 
@@ -18,5 +18,5 @@ Heavily inspired by Android Clean Architecture as demonstrated [here](https://gi
 + Additional UI customization
 + Optional notifications (altitude alert)
 
-##License
+## License
 + [MIT License](/LICENSE)
