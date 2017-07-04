@@ -1,6 +1,6 @@
-package com.gchoy.altimeter.view.calibrate
+package org.testb.java.altimeter.view.calibrate
 
-import com.gchoy.altimeter.Unit
+import org.testb.java.altimeter.Unit
 
 interface CalibrateView {
     fun setCalibrationText(altitude: String, unit: Unit)

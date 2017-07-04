@@ -1,4 +1,4 @@
-package com.gchoy.altimeter
+package org.testb.java.altimeter
 
 import java.text.DecimalFormat
 

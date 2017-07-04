@@ -1,15 +1,14 @@
-package com.gchoy.altimeter.view.settings
+package org.testb.altimeter.view.settings
 
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
-import com.gchoy.altimeter.DEFAULT_SEA_PRESSURE
-import com.gchoy.altimeter.PREF_CALIBRATION_PRESSURE
-import com.gchoy.altimeter.PREF_CALIBRATION_TIME
-import com.gchoy.altimeter.view.MainActivity
-import testb.org.altimeter.R
-
+import org.testb.Android.R
+import org.testb.java.altimeter.DEFAULT_SEA_PRESSURE
+import org.testb.java.altimeter.PREF_CALIBRATION_PRESSURE
+import org.testb.java.altimeter.PREF_CALIBRATION_TIME
+import org.testb.java.altimeter.view.MainActivity
 
 class SettingsFragmentImpl : PreferenceFragmentCompat() {
 

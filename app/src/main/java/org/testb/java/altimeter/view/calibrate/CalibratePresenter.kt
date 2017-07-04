@@ -1,6 +1,6 @@
-package com.gchoy.altimeter.view.calibrate
+package org.testb.java.altimeter.view.calibrate
 
-import com.gchoy.altimeter.view.BasePresenter
+import org.testb.java.altimeter.view.BasePresenter
 
 interface CalibratePresenter : BasePresenter {
     fun setCalibration()

@@ -1,4 +1,4 @@
-package com.gchoy.altimeter.service
+package org.testb.java.altimeter.service
 
 /**
  * @param date Calibration timestamp in milliseconds

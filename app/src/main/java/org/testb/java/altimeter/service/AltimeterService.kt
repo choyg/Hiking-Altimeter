@@ -1,14 +1,14 @@
-package com.gchoy.altimeter.service
+package org.testb.java.altimeter.service
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.*
-import com.gchoy.altimeter.Unit
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
+import org.testb.java.altimeter.*
+import org.testb.java.altimeter.Unit
 
 class AltimeterService(val sensorManager: SensorManager, preferences: RxSharedPreferences) {
     val sensorDelay = 100

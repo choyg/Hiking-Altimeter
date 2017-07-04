@@ -1,10 +1,10 @@
-package com.gchoy.altimeter.view.calibrate
+package org.testb.java.altimeter.view.calibrate
 
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.*
-import com.gchoy.altimeter.Unit
-import com.gchoy.altimeter.service.AltimeterService
 import io.reactivex.disposables.CompositeDisposable
+import org.testb.java.altimeter.*
+import org.testb.java.altimeter.Unit
+import org.testb.java.altimeter.service.AltimeterService
 
 class CalibratePresenterImpl(val view: CalibrateView,
                              preference: RxSharedPreferences,

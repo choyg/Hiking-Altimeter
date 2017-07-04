@@ -7,11 +7,11 @@ android {
     buildToolsVersion '26.0.0'
 
     defaultConfig {
-        applicationId "testb.org.altimeter"
+        applicationId "org.testb.java.altimeter"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 7
+        versionName "2.0"
     }
     buildTypes {
         release {

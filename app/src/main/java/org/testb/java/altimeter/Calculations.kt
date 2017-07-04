@@ -1,4 +1,4 @@
-package com.gchoy.altimeter
+package org.testb.java.altimeter
 
 val SEA_TEMPERATURE = 288.15
 val DEFAULT_SEA_PRESSURE = 1013.25

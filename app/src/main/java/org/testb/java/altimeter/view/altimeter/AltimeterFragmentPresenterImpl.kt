@@ -1,13 +1,13 @@
-package com.gchoy.altimeter.view.altimeter
+package org.testb.java.altimeter.view.altimeter
 
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.DEFAULT_SEA_PRESSURE
-import com.gchoy.altimeter.PREF_CALIBRATION_PRESSURE
-import com.gchoy.altimeter.PREF_CALIBRATION_TIME
-import com.gchoy.altimeter.service.AltimeterService
-import com.gchoy.altimeter.service.Calibration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import org.testb.java.altimeter.DEFAULT_SEA_PRESSURE
+import org.testb.java.altimeter.PREF_CALIBRATION_PRESSURE
+import org.testb.java.altimeter.PREF_CALIBRATION_TIME
+import org.testb.java.altimeter.service.AltimeterService
+import org.testb.java.altimeter.service.Calibration
 
 
 class AltimeterFragmentPresenterImpl(

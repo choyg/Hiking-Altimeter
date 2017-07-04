@@ -1,4 +1,4 @@
-package com.gchoy.altimeter.view
+package org.testb.java.altimeter.view
 
 interface BasePresenter {
     fun attachView()

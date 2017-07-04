@@ -1,4 +1,4 @@
-package com.gchoy.altimeter.view.calibrate
+package org.testb.java.altimeter.view.calibrate
 
 import android.os.Bundle
 import android.text.Spannable
@@ -8,11 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.gchoy.altimeter.Unit
-import com.gchoy.altimeter.view.BaseFragmentImpl
-import com.gchoy.altimeter.view.BasePresenter
 import kotlinx.android.synthetic.main.calibration.*
-import testb.org.altimeter.R
+import org.testb.Android.R
+import org.testb.java.altimeter.Unit
+import org.testb.java.altimeter.view.BaseFragmentImpl
+import org.testb.java.altimeter.view.BasePresenter
+
 
 class CalibrateFragmentImpl : BaseFragmentImpl(), CalibrateView {
 

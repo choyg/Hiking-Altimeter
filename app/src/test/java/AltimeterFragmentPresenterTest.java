@@ -1,15 +1,14 @@
-import com.gchoy.altimeter.view.altimeter.AltimeterFragment;
-import com.gchoy.altimeter.view.altimeter.AltimeterFragmentPresenterImpl;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.testb.altimeter.view.altimeter.AltimeterFragmentPresenterImpl;
+import org.testb.altimeter.view.altimeter.AltimeterView;
 
 public class AltimeterFragmentPresenterTest {
     private AltimeterFragmentPresenterImpl presenter;
 
     @Mock
-    private AltimeterFragment view;
+    private AltimeterView view;
 
     @Before
     public void setUp() {

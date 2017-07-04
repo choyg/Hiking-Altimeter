@@ -1,4 +1,4 @@
-package com.gchoy.altimeter.view.altimeter
+package org.testb.java.altimeter.view.altimeter
 
 import android.os.Bundle
 import android.text.Spannable
@@ -7,12 +7,12 @@ import android.text.style.RelativeSizeSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gchoy.altimeter.service.Altitude
-import com.gchoy.altimeter.service.Calibration
-import com.gchoy.altimeter.view.BaseFragmentImpl
-import com.gchoy.altimeter.view.BasePresenter
 import kotlinx.android.synthetic.main.altimeter.*
-import testb.org.altimeter.R
+import org.testb.Android.R
+import org.testb.java.altimeter.service.Altitude
+import org.testb.java.altimeter.service.Calibration
+import org.testb.java.altimeter.view.BaseFragmentImpl
+import org.testb.java.altimeter.view.BasePresenter
 import java.util.*
 
 class AltimeterFragmentImpl : BaseFragmentImpl(), AltimeterView {

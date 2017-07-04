@@ -1,13 +1,13 @@
-package com.gchoy.altimeter.view
+package org.testb.java.altimeter.view
 
 import android.app.Application
 import android.content.Context
 import android.hardware.SensorManager
 import android.preference.PreferenceManager
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.service.AltimeterService
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import org.testb.java.altimeter.service.AltimeterService
 
 
 class BaseApplication : Application() {

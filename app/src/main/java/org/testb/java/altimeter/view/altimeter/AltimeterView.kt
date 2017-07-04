@@ -1,7 +1,7 @@
-package com.gchoy.altimeter.view.altimeter
+package org.testb.java.altimeter.view.altimeter
 
-import com.gchoy.altimeter.service.Altitude
-import com.gchoy.altimeter.service.Calibration
+import org.testb.java.altimeter.service.Altitude
+import org.testb.java.altimeter.service.Calibration
 
 interface AltimeterView {
     /**

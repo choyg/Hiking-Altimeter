@@ -1,11 +1,11 @@
-package com.gchoy.altimeter.view
+package org.testb.java.altimeter.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
 import com.f2prateek.rx.preferences2.RxSharedPreferences
-import com.gchoy.altimeter.service.AltimeterService
 import io.reactivex.disposables.CompositeDisposable
+import org.testb.java.altimeter.service.AltimeterService
 
 abstract class BaseFragmentImpl : Fragment() {
     protected val compositeDisposable = CompositeDisposable()
