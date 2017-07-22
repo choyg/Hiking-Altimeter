@@ -60,6 +60,7 @@ class CalibratePresenterImpl(val view: CalibrateView,
     override fun onLoad(altitude: String) {
         altitudeString = altitude
         view.setCalibrationText(altitudeString, unitPref.get())
+        view.save(altitudeString)
     }
 
 }
